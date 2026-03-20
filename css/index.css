@@ -247,7 +247,7 @@ body {
     width: 100%;
     height: 60vh;
     background-size: cover;
-    background-position:  center center;
+    background-position: center;
     background-repeat: no-repeat;
 }
 
@@ -336,17 +336,11 @@ body {
     display: flex;
     flex-direction: row;
     margin-bottom: 50px;
-}
-
-.bar { 
-    width: 20px; 
-    height: 80px;
-    background-color: #16213e;
-    margin-right: 10px;
+    border-bottom: 2px solid #16213e;
 }
 
 .Bt { 
-    font-size: 50px;
+    font-size: 40px;
     font-weight: bold;
     height: 80px;
     display: flex;
@@ -397,3 +391,42 @@ body {
 #nb2:checked ~ .notice .con2 { display: flex; }
 #nb3:checked ~ .notice .con3 { display: flex; }
 
+.sug-menu { width: 100%; height: 200px; display: flex; justify-content: center; align-items: center; background-color: #f5f5f3; }
+.Scon { width: 1400px; height: 200px; display: flex; justify-content: space-between; align-items: center; }
+.Sbox { width: 150px; height: 100px; border: 1px solid #16213e77; border-radius: 5px; text-align: center; line-height: 100px; cursor: pointer; transition: .3s ease; font-weight: bold; }
+.Sbox:hover { background-color: #16213e; color: #ccc; }
+
+.progSection { width: 100%; height: 1200px; display: flex; justify-content: center; }
+.progCon { width: 1400px; height: 900px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.progbox { width: 1400px; height: 350px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
+.progcard { width: 350px; height: 400px; background-color: #aaa; transition: .2s ease; cursor: pointer; }
+.progcard:hover { scale: 1.1; }
+.progbox > label { z-index: 1; }
+
+#p1:checked ~ .progmodal1 { display: flex; }
+#p2:checked ~ .progmodal2 { display: flex; }
+#p3:checked ~ .progmodal3 { display: flex; }
+#p4:checked ~ .progmodal4 { display: flex; }
+#p5:checked ~ .progmodal5 { display: flex; }
+#p6:checked ~ .progmodal6 { display: flex; }
+#p7:checked ~ .progmodal7 { display: flex; }
+#p8:checked ~ .progmodal8 { display: flex; }
+
+.po { display: none; position: fixed; inset: 0; width: 100%; height: 100vh; background-color: #86868667; z-index: 9999; justify-content: center; align-items: center; }
+.poCard { width: 500px; height: 600px; background-color: #fff; border-radius: 5px; overflow: hidden; }
+.po-t { width: 100%; height: 50px; display: flex; justify-content: end; align-items: center; padding: 0 10px; background-color: #16213e; }
+.po-xbtn { width: 70px; height: 30px; cursor: pointer; background-color: rgb(255, 39, 39); color: #fff; text-align: center; line-height: 30px; font-weight: bold; border-radius: 5px; }
+.po-m { width: 100%; height: 400px; display: flex; justify-content: center; align-items: center; }
+.po-m img { width: 250px; height: 350px; }
+.po-b { width: 100%; height: 150px; padding: 20px; display: flex; justify-content: center; align-items: center; }
+.po-b h2 { font-weight: normal; font-size: 19px; text-align: center; }
+
+.calSection { width: 100%; height: 2000px; display: flex; justify-content: center; align-items: center; }
+.calCon { width: 1400px; height: 1600px; }
+.cal-select{ width: 1400px; display: flex; flex-direction: row; justify-content: space-between; font-size: 25px; }
+#year, #month { padding: 5px; }
+.cal-box { width: 1400px; height: 1300px; margin-top: 50px; border-radius:10px; overflow: hidden; }
+.calender { width: 1400px; height: 50px; display: flex; flex-direction: row; background-color: #16213e; }
+.calender div { width: 200px; height: 50px; text-align: center; line-height: 50px; color: #ccc; }
+.calender-row { display: flex; flex-direction: row; }
+.day { width: 200px; height: 200px; padding: 10px; background-color: #fff; border: 1px solid #ccc; }
