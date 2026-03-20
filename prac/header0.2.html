@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>CSS Navigation</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:sans-serif;
+}
+
+body{
+background:#111;
+display:flex;
+justify-content:center;
+padding:60px;
+color:white;
+}
+
+/* ============================= */
+/* NAV */
+/* ============================= */
+
+nav{
+width:300px;
+background:#1f1f23;
+border-radius:10px;
+overflow:hidden;
+}
+
+.menu-item{
+position:relative;
+border-bottom:1px solid #2f2f35;
+}
+
+/* 숨겨진 focus input */
+.focus-trap{
+position:absolute;
+inset:0;
+opacity:0;
+cursor:pointer;
+z-index:2;
+}
+
+/* 메인 메뉴 */
+.menu-label{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:14px 16px;
+cursor:pointer;
+background:#1f1f23;
+transition:background .2s;
+}
+
+/* hover 효과 */
+.menu-item:hover .menu-label{
+background:#2a2a30;
+}
+
+/* + 아이콘 */
+.icon{
+position:relative;
+width:12px;
+height:12px;
+}
+
+.icon::before,
+.icon::after{
+content:"";
+position:absolute;
+background:white;
+transition:.3s;
+}
+
+.icon::before{
+width:12px;
+height:2px;
+top:5px;
+left:0;
+}
+
+.icon::after{
+width:2px;
+height:12px;
+left:5px;
+top:0;
+}
+
+/* ============================= */
+/* SUBMENU */
+/* ============================= */
+
+.submenu{
+max-height:0;
+overflow:hidden;
+background:#18181b;
+transition:max-height .35s ease;
+}
+
+.submenu li{
+padding:12px 20px;
+font-size:14px;
+cursor:pointer;
+transition:background .2s;
+}
+
+.submenu li:hover{
+background:#333;
+}
+
+/* ============================= */
+/* CLICK OPEN */
+/* ============================= */
+
+.focus-trap:focus ~ .submenu{
+max-height:200px;
+}
+
+/* 아이콘 + → - */
+
+.focus-trap:focus ~ .menu-label .icon::after{
+transform:rotate(90deg);
+opacity:0;
+}
+
+/* ============================= */
+/* hover 영역 벗어나면 닫힘 */
+/* ============================= */
+
+.menu-item:not(:hover) .focus-trap{
+animation:kill-focus .001s forwards;
+}
+
+@keyframes kill-focus{
+from{display:none;}
+to{display:block;}
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="menu-item">
+
+<input class="focus-trap">
+
+<label class="menu-label">
+대시보드
+<span class="icon"></span>
+</label>
+
+<ul class="submenu">
+<li>통계</li>
+<li>분석</li>
+<li>리포트</li>
+</ul>
+
+</div>
+
+
+<div class="menu-item">
+
+<input class="focus-trap">
+
+<label class="menu-label">
+연구 관리
+<span class="icon"></span>
+</label>
+
+<ul class="submenu">
+<li>프로젝트</li>
+<li>데이터</li>
+<li>실험</li>
+</ul>
+
+</div>
+
+
+<div class="menu-item">
+
+<input class="focus-trap">
+
+<label class="menu-label">
+설정
+<span class="icon"></span>
+</label>
+
+<ul class="submenu">
+<li>사용자</li>
+<li>권한</li>
+<li>시스템</li>
+</ul>
+
+</div>
+
+</nav>
+
+</body>
+</html>
