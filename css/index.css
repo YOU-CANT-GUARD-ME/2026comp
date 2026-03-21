@@ -6,12 +6,32 @@
     padding: 0;
     list-style: none;
     text-decoration: none;
+    color: #333;
 }
 
 body {
     font-family: 'Noto Sans KR', sans-serif;
     background: #f4f1eb;
 }
+
+.popup { position: fixed; z-index: 999999; width: 100%; height: 100%; background-color: #33333341; display: flex; justify-content: center; align-items: center; animation: op forwards 2s; }
+.popupmodal { width: 600px; height: 600px; background-color: #fff; border-radius: 5px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; overflow: hidden; }
+.popup-t { background-color: #16213e; width: 100%; height: 60px; padding: 10px; display: flex; flex-direction: row; justify-content: center; align-items: center;  }
+.poptitle {color: #ccc; }
+.popup-m { width: 100%; height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.popimg { width: 400px; height: 300px; margin-bottom: 20px;  }
+.popimg img { width: 100%; height: 100%; object-fit: contain; }
+.popuptext { display: flex; justify-content: center; align-items: center; flex-direction: column; }
+.popuptext h3 { font-weight: normal; font-size: 18px; }
+.popup-b { width: 100%; height: 80px; display: flex; justify-content: end; align-items: center; }
+.popclose { background-color: #16213e; color: #ccc; width: 80px; height: 40px; text-align: center; line-height: 40px; cursor: pointer; border-radius: 5px; margin-right: 15px; font-weight: bold; }
+
+@keyframes op {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+#pop:checked ~ .popup { display: none; }
 
 /* HEADER */
 .header {
@@ -97,6 +117,7 @@ body {
     height: 18px;
     border: 1.5px solid currentColor;
     border-radius: 3px;
+    color: #ccc;
 }
 
 .np::before {
@@ -108,6 +129,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    color: #ccc;
 }
 
 .np::after {
@@ -120,12 +142,13 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     transition: 0.3s;
+    color: #ccc;
 }
 
 /* dropdown */
 .dropdown {
     position: absolute;
-    top: 64px;
+    top: 100%;
     left: 0;
     min-width: 160px;
     background: #16213e;
@@ -136,19 +159,25 @@ body {
     max-height: 0;
     opacity: 0;
     transform: translateY(-8px);
-    pointer-events: none;
 
     transition: 0.3s;
 }
 
 .dropdown li {
-    padding: 11px 20px;
-    color: #aaa;
     cursor: pointer;
+}
+
+.dropdown li a {  
+    color: #aaa;
+    display: block;
+    padding: 11px 20px;
 }
 
 .dropdown li:hover {
     background: rgba(232,213,163,0.08);
+    color: #e8d5a3;
+}
+.dropdown li:hover a {
     color: #e8d5a3;
 }
 
@@ -202,27 +231,73 @@ body {
     justify-content: space-between;
 }
 
-.nav-b > li {
+.nav-b > li,
+.nav-b > label {
     width: 100px;
     height: 50px;
     text-align: center;
     line-height: 50px;
 }
 
-.nav-b > li > a {
+.nav-b > li > a,
+.nav-b > label  {
     display: block;
     width: 100px; 
     height: 64px;
     color: #ccc;
     text-align: center;
     line-height: 64px;
+    cursor: pointer;
 }
 
-.nav-b > li > a:hover {
+.nav-b > li > a:hover,
+.nav-b > label:hover {
     background-color: #324b8f52
 }
 
+#loginbtn:checked ~ .header .login-modal {
+    display: flex;
+    flex-direction: column;
+}
 
+.login-modal {
+    position: absolute;
+    top: 64px;
+    right: 40px;
+    background-color: #fff;
+    width: 300px;
+    height: 220px;
+    border-top: 4px solid #e8d5a3;
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.login-modal h2 {
+    font-size: 20px;
+}
+
+.login-modal form {
+    width: 100%;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.login-modal form input {
+    padding: 8px;
+}
+
+.login-modal form button {
+    padding: 8px;
+    font-weight: bold;
+    background-color: #16213e;
+    color: #ccc;
+    border: none;
+    cursor: pointer;
+}
 
 /* 슬라이드 */
 
@@ -274,9 +349,9 @@ body {
 
 @keyframes slide {
     0%, 33% { transform: translateX(0vw); }
-    34%, 66% { transform: translateX(-100vw); }
-    67%, 99% { transform: translateX(-200vw); }
-    100% { transform: translateX(-300vw); }
+    34%, 66% { transform: translateX(-25%); }
+    67%, 99% { transform: translateX(-50%); }
+    100% { transform: translateX(-75%); }
 }
 
 /* Progress bar background */
@@ -391,7 +466,7 @@ body {
 #nb2:checked ~ .notice .con2 { display: flex; }
 #nb3:checked ~ .notice .con3 { display: flex; }
 
-.sug-menu { width: 100%; height: 200px; display: flex; justify-content: center; align-items: center; background-color: #f5f5f3; }
+.sug-menu { margin-top: 120px; width: 100%; height: 200px; display: flex; justify-content: center; align-items: center; }
 .Scon { width: 1400px; height: 200px; display: flex; justify-content: space-between; align-items: center; }
 .Sbox { width: 150px; height: 100px; border: 1px solid #16213e77; border-radius: 5px; text-align: center; line-height: 100px; cursor: pointer; transition: .3s ease; font-weight: bold; }
 .Sbox:hover { background-color: #16213e; color: #ccc; }
@@ -421,8 +496,8 @@ body {
 .po-b { width: 100%; height: 150px; padding: 20px; display: flex; justify-content: center; align-items: center; }
 .po-b h2 { font-weight: normal; font-size: 19px; text-align: center; }
 
-.calSection { width: 100%; height: 2000px; display: flex; justify-content: center; align-items: center; }
-.calCon { width: 1400px; height: 1600px; }
+.calSection { width: 100%; height: 1500px; display: flex; justify-content: center; align-items: center; }
+.calCon { width: 1400px; height: 1400px; }
 .cal-select{ width: 1400px; display: flex; flex-direction: row; justify-content: space-between; font-size: 25px; }
 #year, #month { padding: 5px; }
 .cal-box { width: 1400px; height: 1300px; margin-top: 50px; border-radius:10px; overflow: hidden; }
@@ -430,3 +505,39 @@ body {
 .calender div { width: 200px; height: 50px; text-align: center; line-height: 50px; color: #ccc; }
 .calender-row { display: flex; flex-direction: row; }
 .day { width: 200px; height: 200px; padding: 10px; background-color: #fff; border: 1px solid #ccc; }
+
+.bookSlider { width: 100%; height: 900px; display: flex; justify-content: center; align-items: center;  }
+.bookcon { width: 1400px; height: 800px; display: flex; flex-direction: column;}
+.bookslide-wrapper { width: 1400px; overflow: hidden; }
+.bookslides { width: 2800px; height: 500px; display: flex; justify-content: space-between; transition: .3s ease;}
+.bookpage { width: 1400px; height: 500px; display: flex; justify-content: space-between; }
+.bslide { width: 250px; height: 500px; display: flex; flex-direction: column; }
+.booknum { width: 250px; text-align: center; font-weight: bold; }
+.bslide img { width: 250px; height: 370px; }
+.bookcont { width: 250px; height: 80px; margin-top: 5px; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+.btitle { font-size: 16px; text-align: center; }
+.bauthor { text-align: center; font-size: 14px; margin-top: 5px; color: #5e5e5e; }
+.bookcontrol { width: 1400px; display: flex; justify-content: center; }
+.arrow { font-size: 30px; cursor: pointer; }
+.a1 { margin-right: 20px; }
+.a2 { margin-left: 20px; }
+.pagination { width: 1400px; display: flex; justify-content: center; }
+#bs1:checked ~ .bookSlider .bookcon .bookslides { transform: translateX(0); }
+#bs2:checked ~ .bookSlider .bookcon .bookslides { transform: translateX(-1400px); }
+#bs1:checked ~ .bookSlider .bookcon .pagination .current::after { content: "1"; }
+#bs2:checked ~ .bookSlider .bookcon .pagination .current::after { content: "2"; }
+
+.footer { width: 100%; height: 200px; background-color: #16213e; }
+.f-top { width: 100%; height: 150px; padding: 10px 20px; border-bottom: #cccccc60 solid 1px; display: flex; justify-content: space-between; flex-direction: row; }
+.f-left { width: 200px; height: 100%; }
+.f-logo { font-size: 25px; }
+.fab::before { color: #ccc; transition: .2s ease; cursor: pointer; }
+.fa-youtube:hover::before { color: red; }
+.fa-twitter:hover::before { color: lightblue; }
+.fa-facebook:hover::before { color: rgb(0, 0, 187); }
+.f-middle { width: 200px; height: 100%; display: flex; justify-content: center; align-items: start; flex-direction: column; }
+.f-middle div { color: #ccc; }
+.f-right { width: 300px; height: 100%; display: flex; justify-content: center; align-items: start; flex-direction: column; }
+.f-right div { color: #ccc; }
+.f-bottom { width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; padding: 10px 20px; }
+.f-bottom div { color: #ccc; }
