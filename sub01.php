@@ -8,68 +8,7 @@
     <link rel="stylesheet" href="./fontawesome/css/all.css">
 </head>
 <body>
-    <input type="checkbox" name="login-modal" id="loginbtn" hidden>
-    <div class="header">
-        <div class="nav">
-            <div class="logo"><a href="index.html">스킬스북도서관</a></div>
-            <div class="nav-a">
-                <ul>
-    
-                    <li>
-                        <input class="focus-trap">
-                        <a>도서관소개
-                            <span class="np"></span>
-                            <span class="underline"></span>
-                        </a>
-                        <ul class="dropdown">
-                            <li><a href="sub01.html">도서관소개</a></li>
-                            <li><a href="#">도서관현황</a></li>
-                        </ul>
-                    </li>
-    
-                    <li>
-                        <input class="focus-trap">
-                        <a>도서자료실
-                            <span class="np"></span>
-                            <span class="underline"></span>
-                        </a>
-                        <ul class="dropdown">
-                            <li><a href="#">자료실</a></li>
-                            <li><a href="#">열람실예약</a></li>
-                        </ul>
-                    </li>
-    
-                    <li>
-                        <input class="focus-trap">
-                        <a>회원서비스
-                            <span class="np"></span>
-                            <span class="underline"></span>
-                        </a>
-                        <ul class="dropdown">
-                            <li><a href="#">회원가입</a></li>
-                            <li><a href="#">마이페이지</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a href="#">도서검색</a></li>
-                    <li><a href="#">독서관리자</a></li>
-                </ul>
-            </div>
-
-            <ul class="nav-b">
-                <label for="loginbtn">로그인</label>
-                <li><a href="#">회원가입</a></li>                        
-            </ul>
-            <div class="login-modal">
-                <h2>로그인</h2>
-                <form action="">
-                    <input type="text" placeholder="아이디" required>
-                    <input type="password" placeholder="비밀번호" required>
-                    <button type="submit">Login</button>
-                </form>
-            </div>
-        </div>
-    </div>
+    <?php require_once 'header.php' ?>
 
     <div class="introSection">
         <div class="introCon">

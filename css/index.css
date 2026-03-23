@@ -55,6 +55,8 @@ body {
     line-height: 64px;
 }
 
+.logo a { color: #e8d5a3; }
+
 .nav {  
     display: flex; 
     justify-content: space-between; 
@@ -260,7 +262,8 @@ body {
     flex-direction: column;
 }
 
-.login-modal {
+.login-modal,
+.signup-modal {
     position: absolute;
     top: 64px;
     right: 40px;
@@ -274,11 +277,13 @@ body {
     justify-content: space-between;
 }
 
-.login-modal h2 {
+.login-modal h2,
+.signup-modal h2 {
     font-size: 20px;
 }
 
-.login-modal form {
+.login-modal form,
+.signup-modal form {
     width: 100%;
     height: 130px;
     display: flex;
@@ -286,11 +291,13 @@ body {
     justify-content: space-between;
 }
 
-.login-modal form input {
+.login-modal form input,
+.signup-modal form input {
     padding: 8px;
 }
 
-.login-modal form button {
+.login-modal form button,
+.signup-modal form button {
     padding: 8px;
     font-weight: bold;
     background-color: #16213e;
@@ -298,6 +305,8 @@ body {
     border: none;
     cursor: pointer;
 }
+
+.active { display: flex; }
 
 /* 슬라이드 */
 
@@ -511,6 +520,7 @@ body {
 .bookSlider { width: 100%; height: 900px; display: flex; justify-content: center; align-items: center;  }
 .bookcon { width: 1400px; height: 800px; display: flex; flex-direction: column;}
 .bookslide-wrapper { width: 1400px; overflow: hidden; }
+.totalbooknum { width: 1400px; text-align: center; font-size: 20px; margin-bottom: 10px; }
 .bookslides { width: 2800px; height: 500px; display: flex; justify-content: space-between; transition: .3s ease;}
 .bookpage { width: 1400px; height: 500px; display: flex; justify-content: space-between; }
 .bslide { width: 250px; height: 500px; display: flex; flex-direction: column; }
@@ -528,6 +538,8 @@ body {
 #bs2:checked ~ .bookSlider .bookcon .bookslides { transform: translateX(-1400px); }
 #bs1:checked ~ .bookSlider .bookcon .pagination .current::after { content: "1"; }
 #bs2:checked ~ .bookSlider .bookcon .pagination .current::after { content: "2"; }
+#bs1:checked ~ .bookSlider .totalbooknum span::after { content: "4"; }
+#bs2:checked ~ .bookSlider .totalbooknum span::after { content: "7"; }
 
 .footer { width: 100%; height: 200px; background-color: #16213e; }
 .f-top { width: 100%; height: 150px; padding: 10px 20px; border-bottom: #cccccc60 solid 1px; display: flex; justify-content: space-between; flex-direction: row; }

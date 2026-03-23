@@ -15,6 +15,7 @@ body {
 }
 
 
+/* HEADER */
 .header {
     position: sticky;
     top: 0;
@@ -124,7 +125,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(0deg);
-    transition: 0.3s;
+    transition: 0.3s ease-in-out;
     color: #ccc;
 }
 
@@ -143,7 +144,7 @@ body {
     opacity: 0;
     transform: translateY(-8px);
 
-    transition: 0.3s ease-in-out;
+    transition: 0.3s;
 }
 
 .dropdown li {
@@ -214,25 +215,80 @@ body {
     justify-content: space-between;
 }
 
-.nav-b > li {
+.nav-b > li,
+.nav-b > label {
     width: 100px;
     height: 50px;
     text-align: center;
     line-height: 50px;
 }
 
-.nav-b > li > a {
+.nav-b > li > a,
+.nav-b > label  {
     display: block;
     width: 100px; 
     height: 64px;
     color: #ccc;
     text-align: center;
     line-height: 64px;
+    cursor: pointer;
 }
 
-.nav-b > li > a:hover {
+.nav-b > li > a:hover,
+.nav-b > label:hover {
     background-color: #324b8f52
 }
+
+#loginbtn:checked ~ .header .login-modal {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-modal,
+.signup-modal {
+    position: absolute;
+    top: 64px;
+    right: 40px;
+    background-color: #fff;
+    width: 300px;
+    height: 220px;
+    border-top: 4px solid #e8d5a3;
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.login-modal h2,
+.signup-modal h2 {
+    font-size: 20px;
+}
+
+.login-modal form,
+.signup-modal form {
+    width: 100%;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.login-modal form input,
+.signup-modal form input {
+    padding: 8px;
+}
+
+.login-modal form button,
+.signup-modal form button {
+    padding: 8px;
+    font-weight: bold;
+    background-color: #16213e;
+    color: #ccc;
+    border: none;
+    cursor: pointer;
+}
+
+.active { display: flex; }
 
 
 .introSection { width: 100%; height: 900px; margin-top: 150px; display: flex; justify-content: center; align-items: center; }

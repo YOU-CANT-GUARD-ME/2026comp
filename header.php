@@ -1,0 +1,425 @@
+<?php
+session_start();
+?>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    color: #333;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #f4f1eb;
+}
+
+.popup { position: fixed; z-index: 999999; width: 100%; height: 100%; background-color: #33333341; display: flex; justify-content: center; align-items: center; animation: op forwards 2s; }
+.popupmodal { width: 600px; height: 600px; background-color: #fff; border-radius: 5px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; overflow: hidden; }
+.popup-t { background-color: #16213e; width: 100%; height: 60px; padding: 10px; display: flex; flex-direction: row; justify-content: center; align-items: center;  }
+.poptitle {color: #ccc; }
+.popup-m { width: 100%; height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.popimg { width: 400px; height: 300px; margin-bottom: 20px;  }
+.popimg img { width: 100%; height: 100%; object-fit: contain; }
+.popuptext { display: flex; justify-content: center; align-items: center; flex-direction: column; }
+.popuptext h3 { font-weight: normal; font-size: 18px; }
+.popup-b { width: 100%; height: 80px; display: flex; justify-content: end; align-items: center; }
+.popclose { background-color: #16213e; color: #ccc; width: 80px; height: 40px; text-align: center; line-height: 40px; cursor: pointer; border-radius: 5px; margin-right: 15px; font-weight: bold; }
+
+@keyframes op {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+#pop:checked ~ .popup { display: none; }
+
+/* HEADER */
+.header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1a1a2e;
+    padding: 0 40px;
+    height: 64px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo {
+    color: #e8d5a3;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 64px;
+}
+
+.logo a {  color: #e8d5a3; }
+
+.nav {  
+    display: flex; 
+    justify-content: space-between; 
+    flex-direction: row;
+    width: 1400px;
+}
+
+/* NAV */
+.nav-a > ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav-a > ul > li {
+    position: relative;
+}
+
+/* invisible click layer */
+.focus-trap {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* top link */
+.nav-a > ul > li > a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 18px;
+    height: 64px;
+    color: #ccc;
+    text-decoration: none;
+    position: relative;
+    transition: 0.2s;
+}
+
+.nav-a > ul > li > a:hover {
+    background-color: #324b8f52;
+}
+
+/* underline */
+.underline {
+    position: absolute;
+    bottom: 0;
+    left: 18px;
+    right: 18px;
+    height: 2px;
+    background: #e8d5a3;
+    transform: scaleX(0);
+    transition: 0.3s;
+}
+
+/* plus icon */
+.np {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid currentColor;
+    border-radius: 3px;
+    color: #ccc;
+}
+
+.np::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 1.5px;
+    background: currentColor;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ccc;
+}
+
+.np::after {
+    content: '';
+    position: absolute;
+    width: 1.5px;
+    height: 10px;
+    background: currentColor;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    transition: 0.3s ease-in-out;
+    color: #ccc;
+}
+
+/* dropdown */
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 160px;
+    background: #16213e;
+    border-top: 2px solid #e8d5a3;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-8px);
+
+    transition: 0.3s;
+}
+
+.dropdown li {
+    cursor: pointer;
+}
+
+.dropdown li a {  
+    color: #aaa;
+    display: block;
+    padding: 11px 20px;
+}
+
+.dropdown li:hover {
+    background: rgba(232,213,163,0.08);
+    color: #e8d5a3;
+}
+.dropdown li:hover a {
+    color: #e8d5a3;
+}
+
+.focus-trap:focus ~ .dropdown {
+    max-height: 300px;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.focus-trap:focus ~ a .np::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.focus-trap:focus ~ a {
+    color: #e8d5a3;
+}
+
+.focus-trap:focus ~ a .underline {
+    transform: scaleX(1);
+}
+
+.focus-trap:focus ~ a .np {
+    background: #e8d5a3;
+    border-color: #e8d5a3;
+}
+
+.focus-trap:hover ~ a {
+    background-color: #16213e;
+}
+
+.focus-trap:focus ~ a .np::before,
+.focus-trap:focus ~ a .np::after {
+    background-color: #324b8f52;
+}
+
+.nav-a > ul > li:not(:hover) .focus-trap {
+    animation: kill-focus 0.001s forwards;
+}
+
+@keyframes kill-focus {
+    from { display: none; }
+    to { display: block; }
+}
+
+.nav-b {
+    width: 200px;
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nav-b > li,
+.nav-b > label {
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.nav-b > li > a,
+.nav-b > label  {
+    display: block;
+    width: 100px; 
+    height: 64px;
+    color: #ccc;
+    text-align: center;
+    line-height: 64px;
+    cursor: pointer;
+}
+
+.nav-b > li > a:hover,
+.nav-b > label:hover {
+    background-color: #324b8f52
+}
+
+#loginbtn:checked ~ .header .login-modal {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-modal,
+.signup-modal {
+    position: absolute;
+    top: 64px;
+    right: 40px;
+    background-color: #fff;
+    width: 300px;
+    height: 220px;
+    border-top: 4px solid #e8d5a3;
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.signup-modal {
+    height: 250px;
+}
+
+.login-modal h2,
+.signup-modal h2 {
+    font-size: 20px;
+}
+
+.login-modal form,
+.signup-modal form {
+    width: 100%;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.signup-modal form {
+    height: 160px;
+}
+
+.login-modal form input,
+.signup-modal form input {
+    padding: 8px;
+}
+
+.login-modal form button,
+.signup-modal form button {
+    padding: 8px;
+    font-weight: bold;
+    background-color: #16213e;
+    color: #ccc;
+    border: none;
+    cursor: pointer;
+}
+
+.active { display: flex; }
+</style>
+
+    <div class="header">
+        <div class="nav">
+            <div class="logo"><a href="index.php">스킬스북도서관</a></div>
+            <div class="nav-a">
+                <ul>
+    
+                    <li>
+                        <input class="focus-trap">
+                        <a>도서관소개
+                            <span class="np"></span>
+                            <span class="underline"></span>
+                        </a>
+                        <ul class="dropdown">
+                            <li><a href="sub01.php">도서관소개</a></li>
+                            <li><a href="#">도서관현황</a></li>
+                        </ul>
+                    </li>
+    
+                    <li>
+                        <input class="focus-trap">
+                        <a>도서자료실
+                            <span class="np"></span>
+                            <span class="underline"></span>
+                        </a>
+                        <ul class="dropdown">
+                            <li><a href="#">자료실</a></li>
+                            <li><a href="#">열람실예약</a></li>
+                        </ul>
+                    </li>
+    
+                    <li>
+                        <input class="focus-trap">
+                        <a>회원서비스
+                            <span class="np"></span>
+                            <span class="underline"></span>
+                        </a>
+                        <ul class="dropdown">
+                            <li class="signup-btn"><a href="#">회원가입</a></li>
+                            <li><a href="#">마이페이지</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">도서검색</a></li>
+                    <li><a href="#">독서관리자</a></li>
+                </ul>
+            </div>
+
+            <ul class="nav-b">
+            <?php if(isset($_SESSION['user_id'])): ?>
+                <li><a href="logout.php">로그아웃</a></li>
+                <li><a href="#">마이페이즈</a></li>
+            <?php else: ?>
+                <label for="loginbtn" class="login-btn">로그인</label>
+                <li class="signup-btn"><a href="#">회원가입</a></li>   
+            <?php endif; ?>                     
+            </ul>
+            <div class="login-modal">
+                <h2>로그인</h2>
+                <form action="./userAction.php" method="POST">
+                    <input type="hidden" name="type" value="login">
+                    <input type="text" name="id" placeholder="아이디" required>
+                    <input type="password" name="pw" placeholder="비밀번호" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+
+            <div class="signup-modal">
+                <h2>회원가입</h2>
+                <form action="./userAction.php" method="POST">
+                    <input type="hidden" name="type" value="signup">
+                    <input type="text" name="id" placeholder="아이디" required>
+                    <input type="password" name="pw" placeholder="비밀번호" required>
+                    <input type="text" name="name" placeholder="이름" required>
+                    <button type="submit">SignUp</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const $ = e => document.querySelector(e);
+        const $$ = e => [...document.querySelectorAll(e)];
+
+        const signupModal = $('.signup-modal');
+        const loginModal = $('.login-modal');
+
+        const signupBtns = $$('.signup-btn a');
+        const loginBtn = $('.login-btn');
+
+        signupBtns.forEach(btn => {
+            btn.onclick = (e) => {
+                e.preventDefault();
+                signupModal.classList.toggle('active');
+                loginModal.classList.remove('active');
+            };
+        });
+
+        loginBtn.onclick = () => {
+            loginModal.classList.toggle('active');
+            signupModal.classList.remove('active');
+        };
+    </script>
