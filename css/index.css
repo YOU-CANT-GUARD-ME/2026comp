@@ -140,8 +140,8 @@ body {
     background: currentColor;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    transition: 0.3s;
+    transform: translate(-50%, -50%) rotate(0deg);
+    transition: 0.3s ease-in-out;
     color: #ccc;
 }
 
@@ -189,7 +189,7 @@ body {
 }
 
 .focus-trap:focus ~ a .np::after {
-    transform: translate(-50%, -50%) scaleY(0);
+    transform: translate(-50%, -50%) rotate(90deg);
 }
 
 .focus-trap:focus ~ a {
@@ -474,6 +474,7 @@ body {
 .progSection { width: 100%; height: 1200px; display: flex; justify-content: center; }
 .progCon { width: 1400px; height: 900px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .progbox { width: 1400px; height: 350px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
+.progbox:hover .progcard { transform: scale(0.9); }
 .progcard { width: 350px; height: 400px; background-color: #aaa; transition: .2s ease; cursor: pointer; }
 .progcard:hover { scale: 1.1; }
 .progbox > label { z-index: 1; }
@@ -504,7 +505,8 @@ body {
 .calender { width: 1400px; height: 50px; display: flex; flex-direction: row; background-color: #16213e; }
 .calender div { width: 200px; height: 50px; text-align: center; line-height: 50px; color: #ccc; }
 .calender-row { display: flex; flex-direction: row; }
-.day { width: 200px; height: 200px; padding: 10px; background-color: #fff; border: 1px solid #ccc; }
+.day { width: 200px; height: 200px; display: flex; flex-direction: column; padding: 10px; background-color: #fff; border: 1px solid #ccc; }
+.day div { margin-bottom: 10px; }
 
 .bookSlider { width: 100%; height: 900px; display: flex; justify-content: center; align-items: center;  }
 .bookcon { width: 1400px; height: 800px; display: flex; flex-direction: column;}
