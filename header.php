@@ -346,7 +346,7 @@ body {
                             <span class="underline"></span>
                         </a>
                         <ul class="dropdown">
-                            <li><a href="#">자료실</a></li>
+                            <li><a href="sub02.php">자료실</a></li>
                             <li><a href="#">열람실예약</a></li>
                         </ul>
                     </li>
@@ -371,7 +371,7 @@ body {
             <ul class="nav-b">
             <?php if(isset($_SESSION['user_id'])): ?>
                 <li><a href="logout.php">로그아웃</a></li>
-                <li><a href="#">마이페이즈</a></li>
+                <li><a href="#">마이페이지</a></li>
             <?php else: ?>
                 <label for="loginbtn" class="login-btn">로그인</label>
                 <li class="signup-btn"><a href="#">회원가입</a></li>   

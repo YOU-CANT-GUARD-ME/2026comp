@@ -44,17 +44,110 @@
                             </div>
                         </div>
                     </div>
-                    <div class="books-body">
-                        <div class="book">
-                            <div class="book">
-                                
+                        <div class="books-body">
+                            <div class="book-page page1">
+                                <div class="book">
+                                    <div class="book-left">
+                                        <div>1</div>
+                                        <img src="./rec/추천도서1.jpg" alt="1">
+                                        <div>불행은 어떻게 질병으로 이어지는가  : 어린 시절의 트라우마가 신체 건강에 미치는 영향</div>
+                                    </div>
+                                    <div class="book-right">
+                                        <div class="book-rightA">
+                                            <div>네이딘 버크 해리스 지음정지인 옮김</div>
+                                            <div>2019</div>
+                                            <div>19800</div>
+                                            <div class="avaible">대출가능</div>
+                                        </div>
+                                        <div class="book-rightB">
+                                            <div>－</div>
+                                            <div class="rent">대줄하기</div>
+                                        </div>
+                                    </div>
+                                </div>                                
+                                <div class="book">
+                                    <div class="book-left">
+                                        <div>2</div>
+                                        <img src="./rec/추천도서1.jpg" alt="1">
+                                        <div>불행은 어떻게 질병으로 이어지는가  : 어린 시절의 트라우마가 신체 건강에 미치는 영향</div>
+                                    </div>
+                                    <div class="book-right">
+                                        <div class="book-rightA">
+                                            <div>네이딘 버크 해리스 지음정지인 옮김</div>
+                                            <div>2019</div>
+                                            <div>19800</div>
+                                            <div class="avaible">대출가능</div>
+                                        </div>
+                                        <div class="book-rightB">
+                                            <div>－</div>
+                                            <div class="rent">대줄하기</div>
+                                        </div>
+                                    </div>
+                                </div>                                
+                                <div class="book">
+                                    <div class="book-left">
+                                        <div>3</div>
+                                        <img src="./rec/추천도서1.jpg" alt="1">
+                                        <div>불행은 어떻게 질병으로 이어지는가  : 어린 시절의 트라우마가 신체 건강에 미치는 영향</div>
+                                    </div>
+                                    <div class="book-right">
+                                        <div class="book-rightA">
+                                            <div>네이딘 버크 해리스 지음정지인 옮김</div>
+                                            <div>2019</div>
+                                            <div>19800</div>
+                                            <div class="avaible">대출가능</div>
+                                        </div>
+                                        <div class="book-rightB">
+                                            <div>－</div>
+                                            <div class="rent">대줄하기</div>
+                                        </div>
+                                    </div>
+                                </div>                                
+                                <div class="book">
+                                    <div class="book-left">
+                                        <div>4</div>
+                                        <img src="./rec/추천도서1.jpg" alt="1">
+                                        <div>불행은 어떻게 질병으로 이어지는가  : 어린 시절의 트라우마가 신체 건강에 미치는 영향</div>
+                                    </div>
+                                    <div class="book-right">
+                                        <div class="book-rightA">
+                                            <div>네이딘 버크 해리스 지음정지인 옮김</div>
+                                            <div>2019</div>
+                                            <div>19800</div>
+                                            <div class="avaible">대출가능</div>
+                                        </div>
+                                        <div class="book-rightB">
+                                            <div>－</div>
+                                            <div class="rent">대줄하기</div>
+                                        </div>
+                                    </div>
+                                </div>                                
+                                <div class="book">
+                                    <div class="book-left">
+                                        <div>5</div>
+                                        <img src="./rec/추천도서1.jpg" alt="1">
+                                        <div>불행은 어떻게 질병으로 이어지는가  : 어린 시절의 트라우마가 신체 건강에 미치는 영향</div>
+                                    </div>
+                                    <div class="book-right">
+                                        <div class="book-rightA">
+                                            <div>네이딘 버크 해리스 지음정지인 옮김</div>
+                                            <div>2019</div>
+                                            <div>19800</div>
+                                            <div class="avaible">대출가능</div>
+                                        </div>
+                                        <div class="book-rightB">
+                                            <div>－</div>
+                                            <div class="rent">대줄하기</div>
+                                        </div>
+                                    </div>
+                                </div>                                
                             </div>
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+<script></script>
 </html>

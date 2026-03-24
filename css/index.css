@@ -483,9 +483,9 @@ body {
 .progSection { width: 100%; height: 1200px; display: flex; justify-content: center; }
 .progCon { width: 1400px; height: 900px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .progbox { width: 1400px; height: 350px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
-.progbox:hover .progcard { transform: scale(0.9); }
+.progbox:hover .progcard { transform: scale(0.9); opacity: 0.6;  }
 .progcard { width: 350px; height: 400px; background-color: #aaa; transition: .2s ease; cursor: pointer; }
-.progcard:hover { scale: 1.1; }
+.progcard:hover { scale: 1.1; opacity: 1 !important; }
 .progbox > label { z-index: 1; }
 
 #p1:checked ~ .progmodal1 { display: flex; }
@@ -515,6 +515,7 @@ body {
 .calender div { width: 200px; height: 50px; text-align: center; line-height: 50px; color: #ccc; }
 .calender-row { display: flex; flex-direction: row; }
 .day { width: 200px; height: 200px; display: flex; flex-direction: column; padding: 10px; background-color: #fff; border: 1px solid #ccc; }
+.day:hover { background-color: #f0f0f0; }
 .day div { margin-bottom: 10px; }
 
 .bookSlider { width: 100%; height: 900px; display: flex; justify-content: center; align-items: center;  }
