@@ -1,6 +1,15 @@
 <?php 
 $books = json_decode(file_get_contents('./도서정보.json'));
 $rentels = $renales ?? [];
+
+$booksPerPage = 5;
+$totalBooks = count($books);
+$totalPages = ceil($totalBooks / $booksPerPage);
+
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$page = max(1, min($totalPages, $page));
+
+$booksToShow = array_slice($books, ($page - 1) * $booksPerPage, $booksPerPage);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,13 +59,13 @@ $rentels = $renales ?? [];
                     </div>
                     <div class="books-body">
                         <div class="book-page page1">
-                            <?php foreach($books as $i => $b): 
+                            <?php foreach($booksToShow as $i => $b): 
                                 $title = $b->서명;
                                 $rented = isset($rentels[$title]);
                             ?>
                             <div class="book">
                                 <div class="book-left">
-                                    <div><?= $i+1 ?></div>
+                                    <div><?= ($page-1)*$booksPerPage + $i + 1 ?></div>
                                     <img src="./rec/<?= $b->이미지 ?>" alt="<?= $i+1 ?>">
                                     <div class="booktitle"><?= $title ?></div>
                                 </div>
@@ -87,6 +96,17 @@ $rentels = $renales ?? [];
                             <?php endforeach; ?>
                         </div>
                     </div>
+                </div>
+                <div class="pagination">
+                    <?php if ($page > 1): ?>
+                        <a href="?page=<?= $page - 1 ?>" class="prev">&lt;</a>
+                    <?php endif; ?>
+
+                    <span><?= $page ?>/<?= $totalPages ?></span>
+
+                    <?php if($page < $totalPages): ?>
+                        <a href="?page=<?= $page + 1 ?>" class="next">&gt;</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
