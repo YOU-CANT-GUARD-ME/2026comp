@@ -1,3 +1,7 @@
+<?php 
+$books = json_decode(file_get_contents('./도서정보.json'));
+$rentels = $renales ?? [];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,11 +22,11 @@
                 <div class="libtop">
                     <div class="libsearch">
                         <input type="text" placeholder="도서명">
-                        <button class="all">전제</button>
+                        <button class="all">전체</button>
                         <button class="r-able">대출가능</button>
                         <button class="r-notable">대출중</button>
                     </div>
-                    <div class="total">총 <span>10</span>권</div>
+                    <div class="total">총 <span><?= count($books) ?></span>권</div>
                 </div>
                 <div class="libbottom">
                     <div class="books-header">
@@ -36,7 +40,7 @@
                                 <div>저자명</div>
                                 <div>발행년</div>
                                 <div>가격</div>
-                                <div>댜줄성태</div>
+                                <div>대출상태</div>
                             </div>
                             <div class="B-rightB">
                                 <div>대출기간</div>
@@ -44,110 +48,58 @@
                             </div>
                         </div>
                     </div>
-                        <div class="books-body">
-                            <div class="book-page page1">
-                                <div class="book">
-                                    <div class="book-left">
-                                        <div>1</div>
-                                        <img src="./rec/추천도서1.jpg" alt="1">
-                                        <div>불행은 어떻게 질병으로 이어지는가  : 어린 시절의 트라우마가 신체 건강에 미치는 영향</div>
-                                    </div>
-                                    <div class="book-right">
-                                        <div class="book-rightA">
-                                            <div>네이딘 버크 해리스 지음정지인 옮김</div>
-                                            <div>2019</div>
-                                            <div>19800</div>
-                                            <div class="avaible">대출가능</div>
-                                        </div>
-                                        <div class="book-rightB">
-                                            <div>－</div>
-                                            <div class="rent">대줄하기</div>
-                                        </div>
-                                    </div>
-                                </div>                                
-                                <div class="book">
-                                    <div class="book-left">
-                                        <div>2</div>
-                                        <img src="./rec/추천도서1.jpg" alt="1">
-                                        <div>불행은 어떻게 질병으로 이어지는가  : 어린 시절의 트라우마가 신체 건강에 미치는 영향</div>
-                                    </div>
-                                    <div class="book-right">
-                                        <div class="book-rightA">
-                                            <div>네이딘 버크 해리스 지음정지인 옮김</div>
-                                            <div>2019</div>
-                                            <div>19800</div>
-                                            <div class="avaible">대출가능</div>
-                                        </div>
-                                        <div class="book-rightB">
-                                            <div>－</div>
-                                            <div class="rent">대줄하기</div>
+                    <div class="books-body">
+                        <div class="book-page page1">
+                            <?php foreach($books as $i => $b): 
+                                $title = $b->서명;
+                                $rented = isset($rentels[$title]);
+                            ?>
+                            <div class="book">
+                                <div class="book-left">
+                                    <div><?= $i+1 ?></div>
+                                    <img src="./rec/<?= $b->이미지 ?>" alt="<?= $i+1 ?>">
+                                    <div class="booktitle"><?= $title ?></div>
+                                </div>
+                                <div class="book-right">
+                                    <div class="book-rightA">
+                                        <div><?= $b->저자?></div>
+                                        <div><?= $b->발행년 ?></div>
+                                        <div><?= number_format($b->가격) ?></div>
+                                        <div class="<?= $rented ? 'not-avaible' : 'avaible' ?>">
+                                            <?= $rented ? '대출중' : '대출가능' ?>
                                         </div>
                                     </div>
-                                </div>                                
-                                <div class="book">
-                                    <div class="book-left">
-                                        <div>3</div>
-                                        <img src="./rec/추천도서1.jpg" alt="1">
-                                        <div>불행은 어떻게 질병으로 이어지는가  : 어린 시절의 트라우마가 신체 건강에 미치는 영향</div>
-                                    </div>
-                                    <div class="book-right">
-                                        <div class="book-rightA">
-                                            <div>네이딘 버크 해리스 지음정지인 옮김</div>
-                                            <div>2019</div>
-                                            <div>19800</div>
-                                            <div class="avaible">대출가능</div>
-                                        </div>
-                                        <div class="book-rightB">
-                                            <div>－</div>
-                                            <div class="rent">대줄하기</div>
+                                    <div class="book-rightB">
+                                        <div><?= $rented ? $rentels[$title] : '－' ?></div>
+                                        <div>
+                                            <?php if(!$rented): ?>
+                                                <form method="post">
+                                                    <input type="hidden" name="book" value="<?= $title ?>">
+                                                    <button class="rent">대출하기</button>
+                                                </form>
+                                            <?php else: ?>
+                                                <button disabled>대출불가</button>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
-                                </div>                                
-                                <div class="book">
-                                    <div class="book-left">
-                                        <div>4</div>
-                                        <img src="./rec/추천도서1.jpg" alt="1">
-                                        <div>불행은 어떻게 질병으로 이어지는가  : 어린 시절의 트라우마가 신체 건강에 미치는 영향</div>
-                                    </div>
-                                    <div class="book-right">
-                                        <div class="book-rightA">
-                                            <div>네이딘 버크 해리스 지음정지인 옮김</div>
-                                            <div>2019</div>
-                                            <div>19800</div>
-                                            <div class="avaible">대출가능</div>
-                                        </div>
-                                        <div class="book-rightB">
-                                            <div>－</div>
-                                            <div class="rent">대줄하기</div>
-                                        </div>
-                                    </div>
-                                </div>                                
-                                <div class="book">
-                                    <div class="book-left">
-                                        <div>5</div>
-                                        <img src="./rec/추천도서1.jpg" alt="1">
-                                        <div>불행은 어떻게 질병으로 이어지는가  : 어린 시절의 트라우마가 신체 건강에 미치는 영향</div>
-                                    </div>
-                                    <div class="book-right">
-                                        <div class="book-rightA">
-                                            <div>네이딘 버크 해리스 지음정지인 옮김</div>
-                                            <div>2019</div>
-                                            <div>19800</div>
-                                            <div class="avaible">대출가능</div>
-                                        </div>
-                                        <div class="book-rightB">
-                                            <div>－</div>
-                                            <div class="rent">대줄하기</div>
-                                        </div>
-                                    </div>
-                                </div>                                
+                                </div>
                             </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
-<script></script>
+    <script>
+    fetch('./도서정보.json')
+    .then(res => res.json())
+    .then(books => {
+        let values = [];
+        books.forEach(b => values.push(`('${b.이미지}', '${b.서명}', '${b.저자}',' ${b.발행년}', '${b.가격}')`));
+        const sql = "INSERT INTO books (img, title, author, year, price) VALUES " + values.join(',');
+        console.log(sql);
+    });
+    </script>
+</body> 
 </html>

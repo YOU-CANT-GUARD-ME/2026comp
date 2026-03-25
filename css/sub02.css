@@ -27,6 +27,7 @@
 .book-left { width: 700px; height: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 8px 10px; }
 .book-left img { width: 75px; }
 .book-left div:nth-child(1) { width: 30px; text-align: center; }
+.booktitle { width: 525px; }
 .book-left div { font-size: 15px; }
 .book-right { width: 580px; height: 100%; padding: 10px; display: flex; flex-direction: row; justify-content: space-between; align-items: center; }
 .book-rightA { width: 350px; height: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center; }
