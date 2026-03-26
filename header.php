@@ -345,7 +345,7 @@ body {
                         </a>
                         <ul class="dropdown">
                             <li><a href="userBooks.php">자료실</a></li>
-                            <li><a href="#">열람실예약</a></li>
+                            <li><a href="sub03.php">열람실예약</a></li>
                         </ul>
                     </li>
     

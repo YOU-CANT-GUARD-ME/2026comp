@@ -94,7 +94,8 @@
             <div class="reserve">
                 <div class="r-top">
                     <div class="selc-seat">선택 좌석:<span>없음</span></div>
-                    <form action="">
+                    <form method="post" id="reserveForm">
+                        <input type="hidden" name="seats" id="selectedSeats">
                         <div class="input-group">
                             <label for="reserveDate" name="reserveDate">예약일</label>
                             <input type="date" id="reserveDate" name="reserveDate">

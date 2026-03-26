@@ -1,69 +1,49 @@
-const qs = (query) => document.querySelector(query);
-const qsa = (query) => [...document.querySelectorAll(query)];
+const qs = (q) => document.querySelector(q);
+const qsa = (q) => [...document.querySelectorAll(q)];
 
 const MAX_SELECT = 4;
 const selected = new Set();
-let isDragging = false;
+
+const inputs = qsa("#reserveDate, #startTime, #endTime");
 
 function isFormValid() {
-  const date = qs("#reserveDate").value;
-  const start = qs("#startTime").value;
-  const end = qs("#endTime").value;
-  return date && start && end;
+  return inputs.every((i) => i.value);
 }
 
 function render() {
-  qsa(".seat").forEach((seat, i) => {
-    seat.classList.toggle("selected", selected.has(i + 1));
+  qsa(".seat").forEach((seat) => {
+    seat.classList.toggle("selected", selected.has(+seat.textContent));
   });
   const arr = [...selected].sort((a, b) => a - b);
   qs(".selc-seat span").textContent = arr.length ? arr.join(", ") + "번" : "없음";
 
-  const canSubmit = arr.length > 0 && isFormValid();
-  qs(".reserve-btn").style.opacity = canSubmit ? "1" : "0.4";
-  qs(".reserve-btn").style.pointerEvents = canSubmit ? "auto" : "none";
+  const canSubmit = arr.length && isFormValid();
+  const btn = qs(".reserve-btn");
+  btn.style.opacity = canSubmit ? "1" : "0.4";
+  btn.style.pointerEvents = canSubmit ? "auto" : "none";
 }
 
-document.addEventListener("mousedown", (e) => {
-  const seat = e.target.closest(".seat");
-  if (!seat || seat.classList.contains("occupied")) return;
-  isDragging = true;
-  const id = Number(seat.textContent.trim());
-  selected.has(id) ? selected.delete(id) : selected.size < MAX_SELECT && selected.add(id);
-  render();
-});
-
 qsa(".seat").forEach((seat) => {
-  seat.addEventListener("mouseenter", () => {
-    if (!isDragging || seat.classList.contains("occupied")) return;
-    if (selected.size >= MAX_SELECT) return;
-    selected.add(Number(seat.textContent.trim()));
+  seat.addEventListener("click", () => {
+    const id = +seat.textContent;
+    if (seat.classList.contains("occupied")) return;
+    if (selected.has(id)) selected.delete(id);
+    else if (selected.size < MAX_SELECT) selected.add(id);
     render();
   });
 });
 
-document.addEventListener("mouseup", () => {
-  isDragging = false;
-});
-
-qsa("#reserveDate, #startTime, #endTime").forEach((input) => {
-  input.addEventListener("change", render);
-});
+inputs.forEach((i) => i.addEventListener("input", render));
 
 qs(".reserve-btn").addEventListener("click", () => {
   const arr = [...selected].sort((a, b) => a - b);
-  if (arr.length === 0 || !isFormValid()) return;
+  if (!arr.length || !isFormValid()) return;
 
-  const date = qs("#reserveDate").value;
-  const start = qs("#startTime").value;
-  const end = qs("#endTime").value;
+  const [date, start, end] = inputs.map((i) => i.value);
+  if (start >= end) return alert("종료시간은 시작시간보다 늦어야 합니다.");
 
-  if (start >= end) {
-    alert("종료시간은 시작시간보다 늦어야 합니다.");
-    return;
-  }
-
-  alert(`${arr.join(", ")}번 좌석이 ${date} ${start}~${end} 예약되었습니다.`);
+  qs("#selectedSeats").value = arr.join(",");
+  qs("#reserveForm").submit();
 });
 
 render();
