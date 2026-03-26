@@ -33,10 +33,12 @@
 .book-rightA { width: 350px; height: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center; }
 .book-rightA div { font-size: 15px; color: #333; }
 .book-rightA div:nth-child(1) { width: 120px; }
-.avaible { width: 70px; height: 30px; background-color: rgba(166, 255, 193, 0.555); color: rgb(17, 179, 66) !important; border-radius: 10px; border: 1px solid rgba(17, 179, 66, 0.568); display: flex; align-items: center; justify-content: center; }
-.book-rightB { width: 150px; height: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 10px; }
-.book-rightB div:nth-child(1) { font-size: 30px; font-weight: lighter; color: #ccc; }
+.available { width: 70px; height: 30px; background-color: rgba(166, 255, 193, 0.555); color: rgb(17, 179, 66) !important; border-radius: 10px; border: 1px solid rgba(17, 179, 66, 0.568); display: flex; align-items: center; justify-content: center; }
+.not-available { width: 70px; height: 30px; background-color: rgb(255, 134, 134); color: rgb(175, 7, 7) !important; border-radius: 10px; border: 1px solid rgb(175, 7, 7) ; display: flex; align-items: center; justify-content: center; }
+.book-rightB { width: 180px; height: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 10px; }
+.book-rightB div:nth-child(1) {  font-weight: lighter; color: #ccc; }
 .rent { width: 80px; height: 30px; border: 1px solid #16213e; border-radius: 5px; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: .2s ease; }
+.n-rent { width: 80px; height: 30px; border: 1px solid #16213e; border-radius: 5px; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: .2s ease; }
 .rent:hover { background-color: #16213e; color: #ccc; font-weight: bold; }
 .pagination { margin: 20px; text-align: center; font-size: 16px; }
 .pagination a { margin: 0 10px; padding: 5px 10px; color: #333; text-decoration: none; transition: .2s ease; }

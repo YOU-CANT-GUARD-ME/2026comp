@@ -8,6 +8,7 @@
 .seat:hover { background-color: #16213e; color: #ccc; }
 .seat.selected { background-color: #16213e; color: #ccc; }
 .reserve { width: 1400px; height: 150px; background-color: #fff; border: 1px solid #bbb; padding: 15px; border-radius: 10px; margin-top: 20px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
-.r-top { width: 1300px; height: 50px; display: flex; align-items: center; background-color: #eee; border-radius: 10px; padding: 10px;  }
+.r-top { width: 1300px; height: 50px; display: flex; justify-content: space-between; align-items: center; background-color: #eee; border-radius: 10px; padding: 10px;  }
 .r-bottom { width: 1300px; height: 50px; display: flex; justify-content: center; align-items: center;  }
 .reserve-btn { width: 100%; height: 100%; background-color: #16213e; color: #ccc; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-weight: bold; cursor: pointer; }
+form { display: flex; flex-direction: row; justify-content: space-between; width: 550px;   }

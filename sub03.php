@@ -93,7 +93,21 @@
             </div>
             <div class="reserve">
                 <div class="r-top">
-                    <div class="selc-seat">선택 좌석:<span>없음</span> </div>
+                    <div class="selc-seat">선택 좌석:<span>없음</span></div>
+                    <form action="">
+                        <div class="input-group">
+                            <label for="reserveDate" name="reserveDate">예약일</label>
+                            <input type="date" id="reserveDate" name="reserveDate">
+                        </div>
+                        <div class="input-group">
+                            <label for="startTime">시작시간</label>
+                            <input type="time" id="startTime" name="startTime">
+                        </div>
+                        <div class="input-group">
+                            <label for="endTime">종료시간</label>
+                            <input type="time" id="endTime" name="endTime">
+                        </div>
+                    </form>
                 </div>
                 <div class="r-bottom">
                     <div class="reserve-btn">예약하기</div>

@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
@@ -346,7 +344,7 @@ body {
                             <span class="underline"></span>
                         </a>
                         <ul class="dropdown">
-                            <li><a href="sub02.php">자료실</a></li>
+                            <li><a href="userBooks.php">자료실</a></li>
                             <li><a href="#">열람실예약</a></li>
                         </ul>
                     </li>
@@ -359,7 +357,7 @@ body {
                         </a>
                         <ul class="dropdown">
                             <li class="signup-btn"><a href="#">회원가입</a></li>
-                            <li><a href="#">마이페이지</a></li>
+                            <li><a href="/sub04.php">마이페이지</a></li>
                         </ul>
                     </li>
 

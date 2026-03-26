@@ -1,0 +1,7 @@
+* { margin: 0; padding: 0; box-sizing: border-box; list-style: none; text-decoration: none; }
+.bookSection { width: 100%; height: 1000px; display: flex; justify-content: center; align-items: center; }
+.booksBox { width: 1400px; height: 900px; display: flex; flex-direction: column; }
+.title { width: 1400px; height: 80px; display: flex; flex-direction: row; margin-bottom: 50px; border-bottom: 2px solid #16213e; }
+.Bt { font-size: 40px; font-weight: bold; height: 80px; display: flex; line-height: 80px; }
+.Bcardbox { width: 100%; height: 800px; display: flex; flex-wrap: wrap; justify-content: space-between; }
+.card { background-color: #16213e; width: 200px; height: 300px; border-radius: 3px; }

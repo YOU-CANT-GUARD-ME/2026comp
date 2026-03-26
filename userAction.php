@@ -24,7 +24,7 @@ if ($type === "signup") {
     } else if (!password_verify($pw, $user->password)) {
         alert("비밀번호 일치하지 않습니다");
     } else {
-        $_SESSION['user_id'] = $user->username;
+        $_SESSION['user_id'] = $user->id;
         $_SESSION['name'] = $user->name;
         alert("로그인 성공");
     }
