@@ -1,8 +1,9 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 .libSection { width: 100%; height: 1000px; display: flex; justify-content: center; align-items: center; }
 .libCon { width: 1400px; height: 900px; display: flex; flex-direction: column; }
-.title {  width: 1400px; height: 80px; display: flex; flex-direction: row; margin-bottom: 50px; border-bottom: 2px solid #16213e; }
-.Bt {  font-size: 40px; font-weight: bold; height: 80px; display: flex; line-height: 80px; }
+.title { width: 1400px; height: 100px; display: flex; flex-direction: column; margin-bottom: 50px; border-bottom: 2px solid #16213e; }
+.en { font-size: 45px; color: #dbbd70; font-weight: bold; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; }
+.Bt { font-size: 19px; font-weight: bold; display: flex; align-items: center; margin-bottom: 5px; color: #16213e; }
 .libbox { width: 100%; height: 900px; display: flex; flex-direction: column; }
 .libtop { width: 100%; height: 80px; display: flex; justify-content: space-between; align-items: center; flex-direction: row; }
 .libsearch { width: 470px; height: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center;  }

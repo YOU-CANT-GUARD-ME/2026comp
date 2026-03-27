@@ -13,6 +13,7 @@
     <div class="introSection">
         <div class="introCon">
             <div class="title">
+                <div class="en">ABOUT OUR MISSION AND SERVICES</div>
                 <div class="Bt">설립 목적 및 사업 소개</div>
             </div>
             <div class="intro">
@@ -34,6 +35,7 @@
     <div class="timelineSection">
         <div class="timelinecon">
             <div class="title">
+                <div class="en">LIBRARY HISTORY</div>
                 <div class="Bt">도서관 역사</div>
             </div>
 

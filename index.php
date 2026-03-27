@@ -30,13 +30,14 @@
     </div>
 
     <?php require_once "./header.php"; ?>
+
     <!-- 슬라이드 -->
     <div class="heroBanner">
         <div class="slide">
-            <div class="bg"><p>숙련기술의 지식창고</p></div>
-            <div class="bg"><p>전문기술 도서관</p></div>
-            <div class="bg"><p>열람실 예약 오픈</p></div>
-            <div class="bg"><p>숙련기술의 지식창고</p></div>
+            <div class="bg"><p>숙련기술의 지식창고</p><span>1</span></div>
+            <div class="bg"><p>전문기술 도서관</p><span>2</span></div>
+            <div class="bg"><p>열람실 예약 오픈</p><span>3</span></div>
+            <div class="bg"><p>숙련기술의 지식창고</p><span>1</span></div>
         </div>
 
     <div class="hero-progress">
@@ -53,6 +54,7 @@
     <div class="notice">
         <div class="notice-container">
             <div class="title">
+                <div class="en">LIBRARY NOTICE</div>
                 <div class="Bt">도서관소식</div>
             </div>
             <div class="n-btns">
@@ -150,12 +152,12 @@
 
     <div class="sug-menu">
         <div class="Scon">
-            <div class="Sbox">도서대출</div>
-            <div class="Sbox">도서반납</div>
-            <div class="Sbox">좌석예약</div>
-            <div class="Sbox">희망도서신청</div>
-            <div class="Sbox">AI추천도서</div>
-            <div class="Sbox">전주도서관</div>
+            <div class="Sbox"><i class="fa fa-book fa-2x"></i>도서대출</div>
+            <div class="Sbox"><i class="fa fa-book fa-2x"></i>도서반납</div>
+            <div class="Sbox"><i class="fa fa-book fa-2x"></i>좌석예약</div>
+            <div class="Sbox"><i class="fa fa-book fa-2x"></i>희망도서신청</div>
+            <div class="Sbox"><i class="fa fa-book fa-2x"></i>AI추천도서</div>
+            <div class="Sbox"><i class="fa fa-book fa-2x"></i>전주도서관</div>
         </div>
     </div>
 
@@ -276,6 +278,7 @@
     <div class="progSection">
         <div class="progCon">
             <div class="title">
+                <div class="en">PROGRAM</div>
                 <div class="Bt">프로그램</div>
             </div>
             <div class="progbox">
@@ -294,6 +297,7 @@
     <div class="calSection">
         <div class="calCon">
             <div class="title">
+                <div class="en">CALENDER</div>
                 <div class="Bt">행사 달력</div>
             </div>
             <div class="cal-select">
@@ -333,9 +337,9 @@
                 </div>
 
                 <div class="calender-row">
-                    <div class="day"></div>
-                    <div class="day"></div>
-                    <div class="day"></div>
+                    <div class="day not-selected">29</div>
+                    <div class="day not-selected">30</div>
+                    <div class="day not-selected">31</div>
                     <div class="day"><div>1</div>전시[책피는숙련도서관] 4월 북큐레이션</div>
                     <div class="day">2</div>
                     <div class="day"><div>3</div>전시[책피는숙련도서관] 4월 북큐레이션</div>
@@ -374,8 +378,8 @@
                     <div class="day">28</div>
                     <div class="day">29</div>
                     <div class="day">30</div>
-                    <div class="day"></div>
-                    <div class="day"></div>
+                    <div class="day not-selected">1</div>
+                    <div class="day not-selected">2</div>
                 </div>                
             </div>
         </div>
@@ -387,6 +391,7 @@
     <div class="bookSlider">
         <div class="bookcon">
             <div class="title">
+                <div class="en">RECOMENDED BOOKS</div>
                 <div class="Bt">추천 도서</div>
             </div>
             <div class="bookslide-wrapper">
@@ -454,16 +459,22 @@
                         </div>
                     </div>
                 </div>
+
             </div>
 
-            <div class="bookcontrol">
+            <div class="bookcontrol control1">
                 <label for="bs1" class="arrow a1">&lt;</label>
+                <label for="bs1" class="arrow a2">&gt;</label>
+            </div>
+            <div class="bookcontrol control2">
+                <label for="bs2" class="arrow a1">&lt;</label>
                 <label for="bs2" class="arrow a2">&gt;</label>
             </div>
 
             <div class="pagination">
                 <span class="current"></span> / <span class="total">2</span>
             </div>
+
         </div>
     </div>
 

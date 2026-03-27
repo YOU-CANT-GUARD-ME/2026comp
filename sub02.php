@@ -15,6 +15,7 @@ $booksToShow = array_slice($books, ($page - 1) * $booksPerPage, $booksPerPage);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>스킬스북도서관</title>
     <link rel="stylesheet" href="./css/sub02.css">
+    <link rel="stylesheet" href="./css/header.css">
 </head>
 <body>
     <?php require_once 'header.php' ?>
@@ -22,6 +23,7 @@ $booksToShow = array_slice($books, ($page - 1) * $booksPerPage, $booksPerPage);
     <div class="libSection">
         <div class="libCon">
             <div class="title">
+                <div class="en">BOOK LIST</div>
                 <div class="Bt">도서목록</div>
             </div>
 

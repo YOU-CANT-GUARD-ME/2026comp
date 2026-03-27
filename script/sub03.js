@@ -23,6 +23,45 @@ function render() {
   btn.style.pointerEvents = canSubmit ? "auto" : "none";
 }
 
+let isDragging = false;
+let dragMode = null; // 'add' or 'remove'
+
+qsa(".seat").forEach((seat) => {
+  seat.addEventListener("mousedown", (e) => {
+    if (seat.classList.contains("occupied")) return;
+    isDragging = true;
+
+    const id = +seat.textContent;
+    dragMode = selected.has(id) ? "remove" : "add"; // decide the drag action
+    toggleSeat(seat, dragMode);
+
+    e.preventDefault(); // prevent text selection
+  });
+
+  seat.addEventListener("mouseover", () => {
+    if (!isDragging) return;
+    if (seat.classList.contains("occupied")) return;
+    toggleSeat(seat, dragMode);
+  });
+});
+
+document.addEventListener("mouseup", () => {
+  isDragging = false;
+  dragMode = null;
+});
+
+function toggleSeat(seat, mode) {
+  const id = +seat.textContent;
+
+  if (mode === "add" && selected.size < MAX_SELECT) {
+    selected.add(id);
+  } else if (mode === "remove") {
+    selected.delete(id);
+  }
+
+  render();
+}
+
 qsa(".seat").forEach((seat) => {
   seat.addEventListener("click", () => {
     const id = +seat.textContent;

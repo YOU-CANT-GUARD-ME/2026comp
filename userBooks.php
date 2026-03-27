@@ -8,7 +8,7 @@ $books = json_decode(file_get_contents('./도서정보.json'));
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_SESSION['user_id'])) {
         alert("로그인 필요합니다");
-        exit;
+        move();
     }
 
     $book_id = (int)$_POST['book_id'];

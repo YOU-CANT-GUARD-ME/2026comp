@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>스킬스북도서관</title>
     <link rel="stylesheet" href="./css/sub03.css">
+    <link rel="stylesheet" href="./css/header.css">
 </head>
 <body>
     <?php require_once 'header.php' ?>
@@ -12,6 +13,7 @@
     <div class="reserveSection">
         <div class="reserveBox">
             <div class="title">
+                <div class="en">READING ROOM RESERVATION</div>
                 <div class="Bt">열람실예약</div>
             </div>
             <div class="seatBox">
@@ -111,7 +113,7 @@
                     </form>
                 </div>
                 <div class="r-bottom">
-                    <div class="reserve-btn">예약하기</div>
+                    <div class="reserve-btn" id="btnReserve">예약하기</div>
                 </div>
             </div>
         </div>

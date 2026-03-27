@@ -19,9 +19,9 @@ body {
 .popup-t { background-color: #16213e; width: 100%; height: 60px; padding: 10px; display: flex; flex-direction: row; justify-content: center; align-items: center;  }
 .poptitle {color: #ccc; }
 .popup-m { width: 100%; height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-.popimg { width: 400px; height: 300px; margin-bottom: 20px;  }
+.popimg { width: 400px; height: 300px; margin-bottom: 20px; border-bottom: 1px solid #ccc; }
 .popimg img { width: 100%; height: 100%; object-fit: contain; }
-.popuptext { display: flex; justify-content: center; align-items: center; flex-direction: column; }
+.popuptext { display: flex; align-items: start !important; flex-direction: column; }
 .popuptext h3 { font-weight: normal; font-size: 18px; }
 .popup-b { width: 100%; height: 80px; display: flex; justify-content: end; align-items: center; }
 .popclose { background-color: #16213e; color: #ccc; width: 80px; height: 40px; text-align: center; line-height: 40px; cursor: pointer; border-radius: 5px; margin-right: 15px; font-weight: bold; }
@@ -419,19 +419,22 @@ body {
 
 .title { 
     width: 1400px;
-    height: 80px;
+    height: 100px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-bottom: 50px;
     border-bottom: 2px solid #16213e;
 }
 
+.en { font-size: 45px; color: #dbbd70; font-weight: bold; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; }
+
 .Bt { 
-    font-size: 40px;
-    font-weight: bold;
-    height: 80px;
+    font-size: 19px;
     display: flex;
-    line-height: 80px;
+    align-items: center;
+    margin-bottom: 5px;
+    color: #16213e;
+    font-weight: bold;
 }
 
 .n-btns {
@@ -450,6 +453,7 @@ body {
 }
 
 .Ncon {
+    position: relative;
     display: none;
     width: 1400px;
     height: 600px;
@@ -459,20 +463,24 @@ body {
     align-items: center;
     background-color: #f4f4f4;
     border: 1px solid #ccc;
-    border-radius: 10px;
     padding: 50px 0;
 }
 
 .Nbox {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 1200px;
     height: 60px;
-    border-bottom: 1px solid #ccc;
+    transition: .2s ease;
+    background-color: #16213e;
+    padding: 0px 10px;
 }
 
-.Ntext { font-size: 20px; }
-.Ndate { color: #5f5f5f; }
+.Nbox:hover { transform: translateX(-15px); }
+
+.Ntext { padding: 10px; font-size: 20px; display: flex; justify-content: center; align-items: center; color: #ffffff; }
+.Ndate { padding: 0 5px;height: 40px; border-radius: 10px; color: #333; display: flex; align-items: center; background-color: #e8d5a3; }
 
 #nb1:checked ~ .notice .con1 { display: flex; }
 #nb2:checked ~ .notice .con2 { display: flex; }
@@ -480,16 +488,19 @@ body {
 
 .sug-menu { margin-top: 120px; width: 100%; height: 200px; display: flex; justify-content: center; align-items: center; }
 .Scon { width: 1400px; height: 200px; display: flex; justify-content: space-between; align-items: center; }
-.Sbox { width: 150px; height: 100px; border: 1px solid #16213e77; border-radius: 5px; text-align: center; line-height: 100px; cursor: pointer; transition: .3s ease; font-weight: bold; }
+.Sbox { width: 150px; height: 100px; border: 1px solid #16213e77; border-radius: 5px; display: flex; justify-content: center; align-items: center; flex-direction: column; cursor: pointer; transition: .3s ease; font-weight: bold; }
 .Sbox:hover { background-color: #16213e; color: #ccc; }
+.Sbox:hover > i::before { color: #ccc; }
+.Sbox > i::before { transition: .3s ease; }
 
 .progSection { width: 100%; height: 1200px; display: flex; justify-content: center; }
 .progCon { width: 1400px; height: 900px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .progbox { width: 1400px; height: 350px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
 .progbox:hover .progcard { transform: scale(0.9); opacity: 0.6;  }
-.progcard { width: 350px; height: 400px; background-color: #aaa; transition: .2s ease; cursor: pointer; }
+.progcard { width: 300px; height: 350px; margin-top: 15px; margin-left: 15px; background-color: #aaa; transition: .2s ease; cursor: pointer; }
 .progcard:hover { scale: 1.1; opacity: 1 !important; }
-.progbox > label { z-index: 1; }
+.progbox > label { z-index: 1;  }
+.progbox label img { box-shadow: 0 0 15px rgba(0,0,0,0.2); }
 
 #p1:checked ~ .progmodal1 { display: flex; }
 #p2:checked ~ .progmodal2 { display: flex; }
@@ -504,7 +515,7 @@ body {
 .poCard { width: 500px; height: 600px; background-color: #fff; border-radius: 5px; overflow: hidden; }
 .po-t { width: 100%; height: 50px; display: flex; justify-content: end; align-items: center; padding: 0 10px; background-color: #16213e; }
 .po-xbtn { width: 70px; height: 30px; cursor: pointer; background-color: rgb(255, 39, 39); color: #fff; text-align: center; line-height: 30px; font-weight: bold; border-radius: 5px; }
-.po-m { width: 100%; height: 400px; display: flex; justify-content: center; align-items: center; }
+.po-m { width: 100%; height: 400px; border-bottom: 1px solid #ccc; display: flex; justify-content: center; align-items: center; }
 .po-m img { width: 250px; height: 350px; }
 .po-b { width: 100%; height: 150px; padding: 20px; display: flex; justify-content: center; align-items: center; }
 .po-b h2 { font-weight: normal; font-size: 19px; text-align: center; }
@@ -517,9 +528,11 @@ body {
 .calender { width: 1400px; height: 50px; display: flex; flex-direction: row; background-color: #16213e; }
 .calender div { width: 200px; height: 50px; text-align: center; line-height: 50px; color: #ccc; }
 .calender-row { display: flex; flex-direction: row; }
-.day { width: 200px; height: 200px; display: flex; flex-direction: column; padding: 10px; background-color: #fff; border: 1px solid #ccc; }
+.day { width: 200px; height: 150px; display: flex; flex-direction: column; padding: 10px; background-color: #fff; font-size: 14px; border: 1px solid #ccc; }
 .day:hover { background-color: #f0f0f0; }
 .day div { margin-bottom: 10px; }
+.not-selected { background-color: #f0f0f0; }
+.not-selected:hover { background-color: #ddd; }
 
 .bookSlider { width: 100%; height: 900px; display: flex; justify-content: center; align-items: center;  }
 .bookcon { width: 1400px; height: 800px; display: flex; flex-direction: column;}
@@ -533,23 +546,32 @@ body {
 .bookcont { width: 250px; height: 80px; margin-top: 5px; display: flex; justify-content: center; align-items: center; flex-direction: column; }
 .btitle { font-size: 16px; text-align: center; }
 .bauthor { text-align: center; font-size: 14px; margin-top: 5px; color: #5e5e5e; }
-.bookcontrol { width: 1400px; display: flex; justify-content: center; }
-.arrow { font-size: 30px; cursor: pointer; }
+.bookcontrol { width: 1400px; height: 44px; display: flex; justify-content: center; }
+.control1 { display: none;}
+.arrow { font-size: 30px; cursor: pointer; background-color: #16213e; color: #ccc; border-radius: 50%; width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; }
 .a1 { margin-right: 20px; }
 .a2 { margin-left: 20px; }
 .pagination { width: 1400px; display: flex; justify-content: center; }
 #bs1:checked ~ .bookSlider .bookcon .bookslides { transform: translateX(0); }
 #bs2:checked ~ .bookSlider .bookcon .bookslides { transform: translateX(-1400px); }
+#bs1:checked ~ .bookSlider .bookcon .bookcontrol,
+#bs2:checked ~ .bookSlider .bookcon .bookcontrol { animation: block .2s ease; }
+@keyframes block {
+    0%,99.999% { pointer-events: none; }
+    100% { pointer-events: all; }
+}
 #bs1:checked ~ .bookSlider .bookcon .pagination .current::after { content: "1"; }
 #bs2:checked ~ .bookSlider .bookcon .pagination .current::after { content: "2"; }
 #bs1:checked ~ .bookSlider .totalbooknum span::after { content: "4"; }
 #bs2:checked ~ .bookSlider .totalbooknum span::after { content: "7"; }
+#bs2:checked ~ .bookSlider .bookcon .control1 { display: flex; }
+#bs2:checked ~ .bookSlider .bookcon .control2 { display: none; }
 
 .footer { width: 100%; height: 200px; background-color: #16213e; }
 .f-top { width: 100%; height: 150px; padding: 10px 20px; border-bottom: #cccccc60 solid 1px; display: flex; justify-content: space-between; flex-direction: row; }
 .f-left { width: 200px; height: 100%; }
 .f-logo { font-size: 25px; }
-.fab::before { color: #ccc; transition: .2s ease; cursor: pointer; }
+.f-left .fab::before { color: #ccc; transition: .2s ease; cursor: pointer; }
 .fa-youtube:hover::before { color: red; }
 .fa-twitter:hover::before { color: lightblue; }
 .fa-facebook:hover::before { color: rgb(0, 0, 187); }
