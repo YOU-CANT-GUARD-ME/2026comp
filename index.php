@@ -58,9 +58,9 @@
                 <div class="Bt">도서관소식</div>
             </div>
             <div class="n-btns">
-                <label for="nb1" class="n-lbl">일반공지</label>
-                <label for="nb2" class="n-lbl">행사안내</label>
-                <label for="nb3" class="n-lbl">채용안내</label>
+                <label for="nb1" class="n-lbl nx1">일반공지</label>
+                <label for="nb2" class="n-lbl nx2">행사안내</label>
+                <label for="nb3" class="n-lbl nx3">채용안내</label>
             </div>
 
             <div class="Ncon con1">

@@ -3,6 +3,6 @@ function alert($msg) {
     echo "<script>alert('$msg')</script>";
 }
 
-function move() {
-    echo "<script>location.href='/index.php'</script>";
+function move($u = '/index.php') {
+    echo "<script>location.href='$u'</script>";
 }

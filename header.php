@@ -1,4 +1,4 @@
-
+<?php require_once 'db.php' ?>
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
@@ -229,20 +229,22 @@ body {
 }
 
 .nav-b {
-    width: 200px;
+    width: 250px !important;
     height: 64px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .nav-b > li,
 .nav-b > label {
     width: 100px;
-    height: 50px;
+    height: 64px;
     text-align: center;
-    line-height: 50px;
+    line-height: 64px;
+    color: #ccc;
 }
+.users { width: 150px !important; }
 
 .nav-b > li > a,
 .nav-b > label  {
@@ -323,8 +325,13 @@ body {
         <div class="nav">
             <div class="logo"><a href="index.php">스킬스북도서관</a></div>
             <div class="nav-a">
+                <?php if(isset($_SESSION['role']) && (int)$_SESSION['role'] === 1): ?>
+                    <ul>
+                        <li><a href="#">신규도서등록</a></li>
+                        <li><a href="#">업무조회</a></li>
+                    </ul>
+                <?php else: ?>
                 <ul>
-    
                     <li>
                         <input class="focus-trap">
                         <a>도서관소개
@@ -345,7 +352,7 @@ body {
                         </a>
                         <ul class="dropdown">
                             <li><a href="userBooks.php">자료실</a></li>
-                            <li><a href="sub03.php">열람실예약</a></li>
+                            <li><a href="userSeats.php">열람실예약</a></li>
                         </ul>
                     </li>
     
@@ -357,19 +364,19 @@ body {
                         </a>
                         <ul class="dropdown">
                             <li class="signup-btn"><a href="#">회원가입</a></li>
-                            <li><a href="/sub04.php">마이페이지</a></li>
+                            <li><a href="userMypage.php">마이페이지</a></li>
                         </ul>
                     </li>
 
                     <li><a href="#">도서검색</a></li>
-                    <li><a href="#">독서관리자</a></li>
                 </ul>
+                <?php endif; ?>
             </div>
 
             <ul class="nav-b">
             <?php if(isset($_SESSION['user_id'])): ?>
                 <li><a href="logout.php">로그아웃</a></li>
-                <li><a href="#">마이페이지</a></li>
+                <li class="users"><?= $_SESSION['username']?>(<?= $_SESSION['name'] ?>)</li>
             <?php else: ?>
                 <label for="loginbtn" class="login-btn">로그인</label>
                 <li class="signup-btn"><a href="#">회원가입</a></li>   
