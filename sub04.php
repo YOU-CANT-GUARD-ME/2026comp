@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./fontawesome/css/all.css">
     <link rel="stylesheet" href="./css/sub04.css">
 </head>
 <body>
@@ -96,6 +97,29 @@
                     </table>
                 <?php endif; ?>
             </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="f-top">
+            <div class="f-left">
+                <div class="logo f-logo">스킬스북도서관</div>
+                <i class="fab fa-youtube fa-2x"></i>
+                <i class="fab fa-twitter fa-2x"></i>
+                <i class="fab fa-facebook fa-2x"></i>
+            </div>
+            <div class="f-middle">
+                <div>문의전화안내</div>
+                <div>1644-8000</div>
+                <div>운영시간(평일) 09:00~18:00</div>
+            </div>
+            <div class="f-right">
+                <div>인천시 부평구 무네미로 448번길 77</div>
+                <div>한국산업인력공단 글로벌숙련기술진흥원</div>
+            </div>
+        </div>
+        <div class="f-bottom">
+            <div>COPYRIGHTⓒ 2016 HRDKOREA</div>
         </div>
     </div>
 </body>

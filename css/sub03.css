@@ -1,11 +1,13 @@
 * { margin: 0; padding: 0; box-sizing: border-box; list-style: none; text-decoration: none; }
-.reserveSection { width: 100%; height: 1000px; display: flex; justify-content: center; align-items: center; }
+.reserveSection { width: 100%; height: 1000px; margin-bottom: 50px; display: flex; justify-content: center; align-items: center; }
 .reserveBox { width: 1400px; height: 900px; display: flex; flex-direction: column; }
 .title { width: 1400px; height: 100px; display: flex; flex-direction: column; margin-bottom: 50px; border-bottom: 2px solid #16213e; }
 .en { font-size: 45px; color: #dbbd70; font-weight: bold; display: flex; justify-content: center; align-items: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; }
 .Bt { font-size: 19px; font-weight: bold; display: flex; align-items: center; justify-content: center; margin-bottom: 5px; color: #16213e; }
 .seatBox { width: 100%; height: 600px; background-color: #fff; border: 1px solid #bbb; border-radius: 10px; padding: 70px 50px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
-.seat { width: 75px; height: 75px; user-select: none; display: flex; justify-content: center; align-items: center; border: 2px solid #16213e; border-radius: 10px; margin: 5px; transition: .2s ease; cursor: pointer; }
+.seat { position: relative; user-select: none; width: 75px; height: 75px; display: flex; justify-content: center; align-items: center; border: 2px solid #16213e; border-radius: 10px; margin: 5px; transition: .2s ease; cursor: pointer; }
+.seat:hover::after{content: attr(title); position: absolute;top: -10%;left: 50%;transform: translateX(-50%);
+z-index: 999;background-color: #dbbd70;}
 .seat:hover { background-color: #16213e; color: #ccc; }
 .seat.selected { background-color: #16213e; color: #ccc; }
 .reserve { width: 1400px; height: 150px; background-color: #fff; border: 1px solid #bbb; padding: 15px; border-radius: 10px; margin-top: 20px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
@@ -13,3 +15,19 @@
 .r-bottom { width: 1300px; height: 50px; display: flex; justify-content: center; align-items: center;  }
 .reserve-btn { width: 100%; height: 100%; background-color: #16213e; color: #ccc; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-weight: bold; cursor: pointer; }
 form { display: flex; flex-direction: row; justify-content: space-between; width: 550px;   }
+
+/*푸터*/
+.footer { width: 100%; height: 200px; background-color: #16213e; }
+.f-top { width: 100%; height: 150px; padding: 10px 20px; border-bottom: #cccccc60 solid 1px; display: flex; justify-content: space-between; flex-direction: row; }
+.f-left { width: 200px; height: 100%; }
+.f-logo { font-size: 25px; }
+.f-left .fab::before { color: #ccc; transition: .2s ease; cursor: pointer; }
+.fa-youtube:hover::before { color: red; }
+.fa-twitter:hover::before { color: lightblue; }
+.fa-facebook:hover::before { color: rgb(0, 0, 187); }
+.f-middle { width: 200px; height: 100%; display: flex; justify-content: center; align-items: start; flex-direction: column; }
+.f-middle div { color: #ccc; }
+.f-right { width: 300px; height: 100%; display: flex; justify-content: center; align-items: start; flex-direction: column; }
+.f-right div { color: #ccc; }
+.f-bottom { width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; padding: 10px 20px; }
+.f-bottom div { color: #ccc; }

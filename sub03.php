@@ -17,81 +17,14 @@
                 <div class="Bt">열람실예약</div>
             </div>
             <div class="seatBox">
-                <div class="seat">1</div>
-                <div class="seat">2</div>
-                <div class="seat">3</div>
-                <div class="seat">4</div>
-                <div class="seat">5</div>
-                <div class="seat">6</div>
-                <div class="seat">7</div>
-                <div class="seat">8</div>
-                <div class="seat">9</div>
-                <div class="seat">10</div>
-                <div class="seat">11</div>
-                <div class="seat">12</div>
-                <div class="seat">13</div>
-                <div class="seat">14</div>
-                <div class="seat">15</div>
-                <div class="seat">16</div>
-                <div class="seat">17</div>
-                <div class="seat">18</div>
-                <div class="seat">19</div>
-                <div class="seat">20</div>
-                <div class="seat">21</div>
-                <div class="seat">22</div>
-                <div class="seat">23</div>
-                <div class="seat">24</div>
-                <div class="seat">25</div>
-                <div class="seat">26</div>
-                <div class="seat">27</div>
-                <div class="seat">28</div>
-                <div class="seat">29</div>
-                <div class="seat">30</div>
-                <div class="seat">31</div>
-                <div class="seat">32</div>
-                <div class="seat">33</div>
-                <div class="seat">34</div>
-                <div class="seat">35</div>
-                <div class="seat">36</div>
-                <div class="seat">37</div>
-                <div class="seat">38</div>
-                <div class="seat">39</div>
-                <div class="seat">40</div>
-                <div class="seat">41</div>
-                <div class="seat">42</div>
-                <div class="seat">43</div>
-                <div class="seat">44</div>
-                <div class="seat">45</div>
-                <div class="seat">46</div>
-                <div class="seat">47</div>
-                <div class="seat">48</div>
-                <div class="seat">49</div>
-                <div class="seat">50</div>
-                <div class="seat">51</div>
-                <div class="seat">52</div>
-                <div class="seat">53</div>
-                <div class="seat">54</div>
-                <div class="seat">55</div>
-                <div class="seat">56</div>
-                <div class="seat">57</div>
-                <div class="seat">58</div>
-                <div class="seat">59</div>
-                <div class="seat">60</div>
-                <div class="seat">61</div>
-                <div class="seat">62</div>
-                <div class="seat">63</div>
-                <div class="seat">64</div>
-                <div class="seat">65</div>
-                <div class="seat">66</div>
-                <div class="seat">67</div>
-                <div class="seat">68</div>
-                <div class="seat">69</div>
-                <div class="seat">70</div>
-                <div class="seat">71</div>
-                <div class="seat">72</div>
-                <div class="seat">73</div>
-                <div class="seat">74</div>
-                <div class="seat">75</div>
+            <?php for ($i = 1; $i <= 75; $i++): ?>
+                <?php
+                    $isReserved = isset($reservedSeats[$i]);
+                    $class = $isReserved ? 'seat occupied' : 'seat';
+                    $tooltip = $isReserved ? implode(", ", $reservedSeats[$i]) : '예약가능';
+                ?>
+                <div class="<?= $class ?>" title="<?= $tooltip ?>"><?= $i ?></div>
+            <?php endfor; ?>
             </div>
             <div class="reserve">
                 <div class="r-top">
@@ -100,7 +33,7 @@
                         <input type="hidden" name="seats" id="selectedSeats">
                         <div class="input-group">
                             <label for="reserveDate" name="reserveDate">예약일</label>
-                            <input type="date" id="reserveDate" name="reserveDate">
+                            <input type="date" id="reserveDate" name="reserveDate" min="<?= date("Y-m-d"); ?>">
                         </div>
                         <div class="input-group">
                             <label for="startTime">시작시간</label>
@@ -116,6 +49,29 @@
                     <div class="reserve-btn" id="btnReserve">예약하기</div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="f-top">
+            <div class="f-left">
+                <div class="logo f-logo">스킬스북도서관</div>
+                <i class="fab fa-youtube fa-2x"></i>
+                <i class="fab fa-twitter fa-2x"></i>
+                <i class="fab fa-facebook fa-2x"></i>
+            </div>
+            <div class="f-middle">
+                <div>문의전화안내</div>
+                <div>1644-8000</div>
+                <div>운영시간(평일) 09:00~18:00</div>
+            </div>
+            <div class="f-right">
+                <div>인천시 부평구 무네미로 448번길 77</div>
+                <div>한국산업인력공단 글로벌숙련기술진흥원</div>
+            </div>
+        </div>
+        <div class="f-bottom">
+            <div>COPYRIGHTⓒ 2016 HRDKOREA</div>
         </div>
     </div>
     <script src="./script/sub03.js"></script>

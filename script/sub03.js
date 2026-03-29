@@ -1,88 +1,38 @@
-const qs = (q) => document.querySelector(q);
-const qsa = (q) => [...document.querySelectorAll(q)];
+document.addEventListener("DOMContentLoaded", () => {
+    const $ = (q) => document.querySelector(q), $$ = (q) => document.querySelectorAll(q);
+    const selected = new Set(), MAX = 4;
+    let isDragging = false, mode = null;
 
-const MAX_SELECT = 4;
-const selected = new Set();
+    const render = () => {
+        $$(".seat").forEach(s => s.classList.toggle("selected", selected.has(+s.textContent)));
+        const arr = [...selected].sort((a, b) => a - b);
+        $(".selc-seat span").textContent = arr.length ? arr.join(", ") + "번" : "없음";
+        $("#selectedSeats").value = arr.join(",");
+    };
 
-const inputs = qsa("#reserveDate, #startTime, #endTime");
+    const handle = (seat) => {
+        const id = +seat.textContent;
+        if (mode === 'add' && selected.size < MAX) selected.add(id);
+        else if (mode === 'remove') selected.delete(id);
+        render();
+    };
 
-function isFormValid() {
-  return inputs.every((i) => i.value);
-}
+    const seatBox = $(".seatBox");
+    if (!seatBox) return;
 
-function render() {
-  qsa(".seat").forEach((seat) => {
-    seat.classList.toggle("selected", selected.has(+seat.textContent));
-  });
-  const arr = [...selected].sort((a, b) => a - b);
-  qs(".selc-seat span").textContent = arr.length ? arr.join(", ") + "번" : "없음";
+    seatBox.onmousedown = (e) => {
+        const seat = e.target.closest(".seat:not(.occupied)");
+        if (!seat) return;
+        isDragging = true;
+        mode = selected.has(+seat.textContent) ? 'remove' : 'add';
+        handle(seat);
+        e.preventDefault(); 
+    };
 
-  const canSubmit = arr.length && isFormValid();
-  const btn = qs(".reserve-btn");
-  btn.style.opacity = canSubmit ? "1" : "0.4";
-  btn.style.pointerEvents = canSubmit ? "auto" : "none";
-}
-
-let isDragging = false;
-let dragMode = null; // 'add' or 'remove'
-
-qsa(".seat").forEach((seat) => {
-  seat.addEventListener("mousedown", (e) => {
-    if (seat.classList.contains("occupied")) return;
-    isDragging = true;
-
-    const id = +seat.textContent;
-    dragMode = selected.has(id) ? "remove" : "add"; // decide the drag action
-    toggleSeat(seat, dragMode);
-
-    e.preventDefault(); // prevent text selection
-  });
-
-  seat.addEventListener("mouseover", () => {
-    if (!isDragging) return;
-    if (seat.classList.contains("occupied")) return;
-    toggleSeat(seat, dragMode);
-  });
+    seatBox.onmouseover = (e) => {
+        const seat = e.target.closest(".seat:not(.occupied)");
+        if (isDragging && seat) handle(seat);
+    };
+    window.onmouseup = () => isDragging = false;
+    $("#btnReserve").onclick = () => $("#reserveForm").submit();
 });
-
-document.addEventListener("mouseup", () => {
-  isDragging = false;
-  dragMode = null;
-});
-
-function toggleSeat(seat, mode) {
-  const id = +seat.textContent;
-
-  if (mode === "add" && selected.size < MAX_SELECT) {
-    selected.add(id);
-  } else if (mode === "remove") {
-    selected.delete(id);
-  }
-
-  render();
-}
-
-qsa(".seat").forEach((seat) => {
-  seat.addEventListener("click", () => {
-    const id = +seat.textContent;
-    if (seat.classList.contains("occupied")) return;
-    if (selected.has(id)) selected.delete(id);
-    else if (selected.size < MAX_SELECT) selected.add(id);
-    render();
-  });
-});
-
-inputs.forEach((i) => i.addEventListener("input", render));
-
-qs(".reserve-btn").addEventListener("click", () => {
-  const arr = [...selected].sort((a, b) => a - b);
-  if (!arr.length || !isFormValid()) return;
-
-  const [date, start, end] = inputs.map((i) => i.value);
-  if (start >= end) return alert("종료시간은 시작시간보다 늦어야 합니다.");
-
-  qs("#selectedSeats").value = arr.join(",");
-  qs("#reserveForm").submit();
-});
-
-render();

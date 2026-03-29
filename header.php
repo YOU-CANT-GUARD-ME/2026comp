@@ -326,10 +326,59 @@ body {
             <div class="logo"><a href="index.php">스킬스북도서관</a></div>
             <div class="nav-a">
                 <?php if(isset($_SESSION['role']) && (int)$_SESSION['role'] === 1): ?>
-                    <ul>
-                        <li><a href="#">신규도서등록</a></li>
-                        <li><a href="#">업무조회</a></li>
-                    </ul>
+                <ul>
+                    <li>
+                        <input class="focus-trap">
+                        <a>도서관소개
+                            <span class="np"></span>
+                            <span class="underline"></span>
+                        </a>
+                        <ul class="dropdown">
+                            <li><a href="sub01.php">도서관소개</a></li>
+                            <li><a href="#">도서관현황</a></li>
+                        </ul>
+                    </li>
+    
+                    <li>
+                        <input class="focus-trap">
+                        <a>도서자료실
+                            <span class="np"></span>
+                            <span class="underline"></span>
+                        </a>
+                        <ul class="dropdown">
+                            <li><a href="userBooks.php">자료실</a></li>
+                            <li><a href="userSeats.php">열람실예약</a></li>
+                        </ul>
+                    </li>
+    
+                    <li>
+                        <input class="focus-trap">
+                        <a>회원서비스
+                            <span class="np"></span>
+                            <span class="underline"></span>
+                        </a>
+                        <ul class="dropdown">
+                            <li class="signup-btn"><a href="#">회원가입</a></li>
+                            <li><a href="userMypage.php">마이페이지</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">도서검색</a></li>
+
+                    <li>
+                        <input class="focus-trap">
+                        <a>도서관리자
+                            <span class="np"></span>
+                            <span class="underline"></span>
+                        </a>
+                        <ul class="dropdown">
+                            <li><a href="sub05.php">신규등서등록</a></li>
+                            <li><a href="#">대출/열람실 업무조회</a></li>
+                            <li><a href="#">팝업관리</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
                 <?php else: ?>
                 <ul>
                     <li>

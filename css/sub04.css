@@ -30,3 +30,19 @@ h3 {text-align: center; width: 100%;}
 .seatTable tbody tr { border-bottom: 1px solid #ccc; }
 .form { display: flex !important; justify-content: center; }
 .cancel-btn { width: 80px; height: 35px;  border: none; color: #ccc; background-color: #16213e; cursor: pointer; border-radius: 5px; }
+
+/*푸터*/
+.footer { width: 100%; height: 200px; background-color: #16213e; }
+.f-top { width: 100%; height: 150px; padding: 10px 20px; border-bottom: #cccccc60 solid 1px; display: flex; justify-content: space-between; flex-direction: row; }
+.f-left { width: 200px; height: 100%; }
+.f-logo { font-size: 25px; }
+.f-left .fab::before { color: #ccc; transition: .2s ease; cursor: pointer; }
+.fa-youtube:hover::before { color: red; }
+.fa-twitter:hover::before { color: lightblue; }
+.fa-facebook:hover::before { color: rgb(0, 0, 187); }
+.f-middle { width: 200px; height: 100%; display: flex; justify-content: center; align-items: start; flex-direction: column; }
+.f-middle div { color: #ccc; }
+.f-right { width: 300px; height: 100%; display: flex; justify-content: center; align-items: start; flex-direction: column; }
+.f-right div { color: #ccc; }
+.f-bottom { width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; padding: 10px 20px; }
+.f-bottom div { color: #ccc; }
