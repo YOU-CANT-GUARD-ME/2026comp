@@ -1,0 +1,41 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+.booksSection { width: 100%; height: 1000px; display: flex; justify-content: center; align-items: center;  }
+.booksBox { width: 1400px; height: 900px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.title { width: 1400px; height: 100px; display: flex; flex-direction: column; margin-bottom: 50px; border-bottom: 2px solid #16213e; }
+.en { font-size: 45px; color: #dbbd70; font-weight: bold; display: flex; justify-content: center; align-items: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; }
+.Bt { font-size: 19px; font-weight: bold; display: flex; align-items: center; justify-content: center; margin-bottom: 5px; color: #16213e; }
+.bookstable { width: 100%; height: 800px; background-color: #fff; border: 1px solid #ccc; box-shadow: 0 0 15px rgba(0,0,0,0.1); display: flex; flex-direction: column; border-radius: 10px; overflow: hidden; }
+.t-top { width: 100%; height: 60px; background-color: #16213e; padding: 0px 40px; display: flex; justify-content: space-between; flex-direction: row; align-items: center; }
+.t-top div { color: #ccc; }
+.t-topr { width: 780px; display: flex; flex-direction: row; justify-content: space-between; }
+.btitletop { width: 400px; }
+.authortop { width: 180px; }
+.t-topl { width: 420px; display: flex; flex-direction: row; justify-content: space-between; }
+.t-bottom { width: 100%; height: 440px; display: flex; flex-direction: column; }
+.row { width: 100%; height: 100px; border-bottom: 1px solid #ccc; padding: 0 40px; display: flex; flex-direction: row; justify-content: space-between; align-items: center; }
+.row div { font-size: 15px; }
+.btitle { width: 400px; }
+
+.seatsSection { width: 100%; height: 1000px; display: flex; justify-content: center; align-items: center; }
+.seatsBox { width: 1400px; height: 900px; display: flex; flex-direction: column; align-items: center; }
+.seatstable { width: 100%; height: 800px; background-color: #fff; border: 1px solid #ccc; box-shadow: 0 0 15px rgba(0,0,0,0.1); display: flex; flex-direction: column; border-radius: 10px; overflow: hidden; }
+.st-top { width: 100%; height: 60px; background-color: #16213e; display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 0 50px; }
+.st-top div { color: #ccc; width: 80px; text-align: center;  }
+.srow { width: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 0 50px; height: 80px; border-bottom: 1px solid #ccc; }
+.srow div { text-align: center; width: 80px; }
+.btn-cancel { display: flex; justify-content: center; align-items: center; border-radius: 5px; background-color: #16213e; color: #ccc; width: 80px; height: 30px; }
+
+.footer { width: 100%; height: 200px; background-color: #16213e; }
+.f-top { width: 100%; height: 150px; padding: 10px 20px; border-bottom: #cccccc60 solid 1px; display: flex; justify-content: space-between; flex-direction: row; }
+.f-left { width: 200px; height: 100%; }
+.f-logo { font-size: 25px; }
+.f-left .fab::before { color: #ccc; transition: .2s ease; cursor: pointer; }
+.fa-youtube:hover::before { color: red; }
+.fa-twitter:hover::before { color: lightblue; }
+.fa-facebook:hover::before { color: rgb(0, 0, 187); }
+.f-middle { width: 200px; height: 100%; display: flex; justify-content: center; align-items: start; flex-direction: column; }
+.f-middle div { color: #ccc; }
+.f-right { width: 300px; height: 100%; display: flex; justify-content: center; align-items: start; flex-direction: column; }
+.f-right div { color: #ccc; }
+.f-bottom { width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; padding: 10px 20px; }
+.f-bottom div { color: #ccc; }

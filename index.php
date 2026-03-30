@@ -1,3 +1,9 @@
+<?php
+require_once "./db.php"; // Make sure this path is correct!
+$today = date("Y-m-d");
+// Change this line in index.php
+$activePopups = DB::fetchAll("SELECT * FROM popup");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,27 +13,35 @@
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./fontawesome/css/all.css">
 </head>
-
 <body>
-    <input type="radio" name="popupm" id="pop" hidden>
-    <div class="popup">
-        <div class="popupmodal">
-            <div class="popup-t">
-                <div class="poptitle">2025년 지방기능경기대회 참가원서 접수 공고사항을 아래 같이 알려드립니다.</div>
-            </div>
-            <div class="popup-m">
-                <div class="popimg"><img src="./images/images (1).png" alt=""></div>
-                <div class="popuptext">
-                    <h3>□ 접수기간 : 2025. 1. 13.(월) ～ 1. 24.(금) 18:00 마감 [12일간]</h3>
-                    <h3>□ 대상직종 : 웹디자인및개발 등 48개 직종</h3>
-                    <h3>□ 접수방법 : 마이스터넷 홈페이지 인터넷 접수</h3>
+    <?php foreach ($activePopups as $idx => $p): ?>
+        <input type="radio" name="popupm_<?= $idx ?>" id="pop_<?= $idx ?> pop" class="pop-check" hidden>
+        
+        <div class="popup">
+            <div class="popupmodal">
+                <div class="popup-t">
+                    <div class="poptitle"><?= htmlspecialchars($p->title) ?></div>
+                </div>
+                <div class="popup-m">
+                    <div class="popimg"><img src="./<?= $p->image ?>" alt=""></div>
+                    <div class="popuptext">
+                        <h3><?= nl2br(htmlspecialchars($p->content)) ?></h3>
+                    </div>
+                </div>
+                <div class="popup-b">
+                    <label class="popclose" for="pop_<?= $idx ?>">닫기</label>
                 </div>
             </div>
-            <div class="popup-b">
-                <label class="popclose" for="pop">닫기</label>
-            </div>
         </div>
-    </div>
+
+    <?php endforeach; ?>
+        <script>
+            const popup = document.querySelector('.popup');
+            const closeBtn = document.querySelector('.popclose');
+            closeBtn.onclick = () => {
+                popup.style.display = 'none';
+            }
+        </script>
 
     <?php require_once "./header.php"; ?>
 

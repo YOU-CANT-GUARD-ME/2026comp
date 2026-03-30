@@ -31,7 +31,7 @@ body {
     100% { opacity: 1; }
 }
 
-#pop:checked ~ .popup { display: none; }
+.pop-check:checked + .popup { display: none !important; }
 
 /* HEADER */
 .header {

@@ -73,7 +73,7 @@ $booksToShow = array_slice($books, ($page - 1) * $booksPerPage, $booksPerPage);
                             <div class="book">
                                 <div class="book-left">
                                     <div><?= $book_id ?></div>
-                                    <img src="./rec/<?= $b->이미지 ?>" alt="<?= $book_id ?>">
+                                    <img src="./<?= $b->이미지 ?>" alt="<?= $book_id ?>">
                                     <div class="booktitle"><?= $b->서명 ?></div>
                                 </div>
 

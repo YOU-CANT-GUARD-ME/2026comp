@@ -2,7 +2,8 @@
 require_once 'db.php';
 require_once 'lib.php';
 
-$books = json_decode(file_get_contents('./도서정보.json'));
+
+$books = DB::fetchAll("SELECT id, title AS 서명, author AS 저자, img AS 이미지, year AS 발행년, price AS 가격 FROM books ORDER BY id ASC");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_SESSION['user_id'])) {

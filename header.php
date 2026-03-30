@@ -372,8 +372,8 @@ body {
                             <span class="underline"></span>
                         </a>
                         <ul class="dropdown">
-                            <li><a href="sub05.php">신규등서등록</a></li>
-                            <li><a href="#">대출/열람실 업무조회</a></li>
+                            <li><a href="adminRegister.php">신규등서등록</a></li>
+                            <li><a href="adminStatus.php">대출/열람실 업무조회</a></li>
                             <li><a href="#">팝업관리</a></li>
                         </ul>
                     </li>
