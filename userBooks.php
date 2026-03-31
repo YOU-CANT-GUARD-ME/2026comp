@@ -7,8 +7,7 @@ $books = DB::fetchAll("SELECT id, title AS 서명, author AS 저자, img AS 이�
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_SESSION['user_id'])) {
-        alert("로그인 필요합니다");
-        move();
+        back("로그인이 필요합니다");
     }
 
     $book_id = $_POST['book_id'];

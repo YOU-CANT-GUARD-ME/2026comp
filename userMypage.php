@@ -23,7 +23,8 @@ if (isset($_POST['cancel_id'])) {
     move('userMypage.php');
 }
 
-$rentedBooks = DB::fetchAll("select r.id, r.book_id, r.rent_date, r.return_date, b.title, b.author, b.img
+$rentedBooks = DB::fetchAll("
+    select r.id, r.book_id, r.rent_date, r.return_date, b.title, b.author, b.img
     from rentals r 
     join books b on r.book_id = b.id
     where r.user_id = $user_id order by r.rent_date desc
@@ -34,7 +35,7 @@ $reservedSeats = DB::fetchAll("
     FROM reservation s
     LEFT JOIN users u ON s.user_id = u.id
     WHERE s.user_id = $user_id
-    AND s.end_time >= CURTIME() -- only future or ongoing
+    AND s.end_time >= CURTIME()
     ORDER BY s.reserve_date ASC, s.start_time ASC
 ");
 

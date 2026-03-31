@@ -8,10 +8,10 @@ if (isset($_GET['return_id'])) {
     move('adminStatus.php', '반납 처리가 완료되었습니다');
 }
 
-if (isset($_GET['cancel_res_id'])) {
-    $id = $_GET['canel_res_id'];
-    DB::exec("delete from reservation where id = '$id'");
-    move('adminStatus.php', '예약이 위소되었습니다');
+if (isset($_GET['cancel_id'])) {
+    $seat_id = $_GET['cancel_id'];
+    DB::exec("delete from reservation where id = '$seat_id'");
+    move('adminStatus.php', '예약이 취소되었습니다');
 }
 
 $rentals = DB::fetchAll("

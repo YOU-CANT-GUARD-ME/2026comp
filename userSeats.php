@@ -52,29 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['seats'])) {
     }
 }
 
-$rows = DB::fetchAll("
-    SELECT * FROM reservation 
-    WHERE reserve_date >= CURDATE() 
-    ORDER BY reserve_date DESC, start_time DESC
-");
-
-$reservedSeats = []; // Start fresh
-
-// 1. Get the data
+$reservedSeats = []; 
 $rows = DB::fetchAll("SELECT * FROM reservation WHERE reserve_date >= CURDATE()");
-
-// 2. Process the data
 foreach ($rows as $r) {
-    // Convert $r to an array just in case it's an object
     $rowArr = (array)$r; 
-    
-    // Force the seat number to be a simple number (Integer)
     $sn = (int)$rowArr['seat_number']; 
-    
-    // Create the "Time Label" (e.g., "2026-03-29 09:00~12:00")
     $label = $rowArr['reserve_date'] . " " . substr($rowArr['start_time'], 0, 5) . "~" . substr($rowArr['end_time'], 0, 5);
-    
-    // Store it in our master list
     $reservedSeats[$sn][] = $label;
 }
 require 'sub03.php';

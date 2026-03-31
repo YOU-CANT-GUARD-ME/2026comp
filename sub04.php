@@ -3,124 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>스킬스북도서관</title>
+    <link rel="stylesheet" href="./css/sub02.css">
+    <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./fontawesome/css/all.css">
-    <link rel="stylesheet" href="./css/sub04.css">
 </head>
 <body>
     <?php require_once 'header.php' ?>
 
-    <div class="bookSection">
-        <div class="booksBox">
+    <div class="libSection">
+        <div class="libCon">
             <div class="title">
-                <div class="en">LOAN REPOSITORY</div>
-                <div class="Bt">대출도서복록</div>
+                <div class="en">BOOK LIST</div>
+                <div class="Bt">도서목록</div>
             </div>
-            <div class="Bcardbox">
-                <?php if (empty($rentedBooks)): ?>
-                    <h3>대출한 도서가 없습니다.</h3>
-                <?php else: ?>
-                    <?php foreach($rentedBooks as $book): 
 
-                        $today = new DateTime();
-                        $returnDate = new DateTime($book->return_date);
-                        $days = (int)$today->diff($returnDate)->format('%r%a');
+            <div class="libbox">
+                <div class="libtop">
+                    <div class="libsearch">
+                        <input type="text" placeholder="도서명">
+                        <button class="all">전체</button>
+                        <button class="r-able">대출가능</button>
+                        <button class="r-notable">대출중</button>
+                    </div>
+                    <div class="total">총 <span><?= count($books) ?></span>권</div>
+                </div>
 
-                    ?>
-                    <div class="cardbox">
-                        <div class="card">
-                            <img src="./rec/<?= $book->img ?>">
-
-                            <div class="book-de">
-                                <div class="book-title"><?= $book->title ?></div>
-                                <div class="book-author">저자: <?= $book->author ?></div>
-                                <div class="book-rent">대출일: <?= $book->rent_date ?></div>
-                                <div class="book-return">반납일: <?= $book->return_date ?></div>
-                                <div class="daysleft">남은기간: <?= $days ?>일</div>
-
-                                <form method="post">
-                                    <input type="hidden" name="return_id" value="<?= $book->id ?>">
-                                    <button class="return-btn">반납</button>
-                                </form>
+                <div class="libbottom">
+                    <div class="books-header">
+                        <div class="B-left">
+                            <div>No.</div>
+                            <div>도서사진</div>
+                            <div>도서명</div>
+                        </div>
+                        <div class="B-right">
+                            <div class="B-rightA">
+                                <div>저자명</div>
+                                <div>발행년</div>
+                                <div>가격</div>
+                                <div>대출상태</div>
                             </div>
-                        </div>                    
+                            <div class="B-rightB">
+                                <div>대출기간</div>
+                                <div>대출</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </div>
-        </div>
-    </div>
+                    <div class="books-body">
+                        <div class="book-page page1">
+                            <?php foreach($booksToShow as $i => $b): 
+                                // We use the ID from the database primarily
+                                $book_id = $b->id;
+                                $rented = in_array($book_id, $rentedIds);
+                            ?>
+                            <div class="book">
+                                <div class="book-left">
+                                    <div><?= $book_id ?></div>
+                                    <img src="./<?= $b->이미지 ?>" alt="<?= $book_id ?>">
+                                    <div class="booktitle"><?= $b->서명 ?></div>
+                                </div>
 
-    <div class="seatSection">
-        <div class="seatBox">
-            <div class="title">
-                <div class="en">READING ROOM RESERVATION</div>
-                <div class="Bt">열람실예약현황</div>
-            </div>
-            <div class="seattable">
-                <?php if(empty($reservedSeats)): ?>
-                    <h3>예약한 좌석이 없습니다</h3>
-                <?php else: ?>
-                    <table class="seatTable">
-                        <thead>
-                            <tr>
-                                <th>좌석번호</th>
-                                <th>예약일</th>
-                                <th>시작시간</th>
-                                <th>종료시간</th>
-                                <th>예약자</th>
-                                <th>취소</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach($reservedSeats as $seat): ?>
-                            <tr>
-                                <td><?= $seat->seat_number ?></td>
-                                <td><?= $seat->reserve_date ?></td>
-                                <td><?= $seat->start_time ?></td>
-                                <td><?= $seat->end_time ?></td>
-                                <td><?= $seat->username ?? $seat->user->id ?></td>
-                                <td>
-                                    <?php if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $seat->user_id): ?>
-                                        <form method="post">
-                                            <input type="hidden" name="cancel_id" value="<?= $seat->id ?>">
-                                            <button class="cancel-btn">취소</button>
-                                        </form>
-                                    <?php else: ?>
-                                        －
-                                    <?php endif; ?>
-                                </td>
-                            </tr>
+                                <div class="book-right">
+                                    <div class="book-rightA">
+                                        <div><?= $b->저자 ?></div>
+                                        <div><?= $b->발행년 ?></div>
+                                        <div><?= number_format($b->가격) ?></div>
+                                        <div class="<?= $rented ? 'not-available' : 'available' ?>">
+                                            <?= $rented ? '대출중' : '대출가능' ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="book-rightB">
+                                        <div><?= $rented ? '대출중' : '－' ?></div>
+                                        <div>
+                                            <?php if(!$rented): ?>
+                                                <form method="post">
+                                                    <input type="hidden" name="book_id" value="<?= $book_id ?>">
+                                                    <button class="rent">대출하기</button>
+                                                </form>
+                                            <?php else: ?>
+                                                <button disabled class="n-rent">대출불가</button>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination">
+                    <?php if ($page > 1): ?>
+                        <a href="?page=<?= $page - 1 ?>" class="prev">&lt;</a>
+                    <?php endif; ?>
+
+                    <span><?= $page ?> / <?= $totalPages ?></span>
+
+                    <?php if($page < $totalPages): ?>
+                        <a href="?page=<?= $page + 1 ?>" class="next">&gt;</a>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="footer">
-        <div class="f-top">
-            <div class="f-left">
-                <div class="logo f-logo">스킬스북도서관</div>
-                <i class="fab fa-youtube fa-2x"></i>
-                <i class="fab fa-twitter fa-2x"></i>
-                <i class="fab fa-facebook fa-2x"></i>
-            </div>
-            <div class="f-middle">
-                <div>문의전화안내</div>
-                <div>1644-8000</div>
-                <div>운영시간(평일) 09:00~18:00</div>
-            </div>
-            <div class="f-right">
-                <div>인천시 부평구 무네미로 448번길 77</div>
-                <div>한국산업인력공단 글로벌숙련기술진흥원</div>
-            </div>
         </div>
-        <div class="f-bottom">
-            <div>COPYRIGHTⓒ 2016 HRDKOREA</div>
-        </div>
-    </div>
-</body>
+</body> 
 </html>

@@ -112,7 +112,7 @@
                         
                         <div class="username"><?= $res->username ?></div>
                         <div>
-                            <a href="?cancel_res_id=<?= $res->id ?>" 
+                            <a href="?cancel_id=<?= $res->id ?>" 
                             class="btn-cancel" 
                             onclick="return confirm('예약을 취소하시겠습니까?')">취소</a>
                         </div>
