@@ -1,3 +1,3 @@
 <?php
 require_once 'db.php';
-require_once 'lib.php'
+require_once 'lib.php';
