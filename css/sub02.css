@@ -1,0 +1,16 @@
+* {  margin: 0; padding: 0; box-sizing: border-box; list-style: none; text-decoration: none; color: #333; }
+.booksSection { width: 100%; padding-top: 150px; display: flex; justify-content: center; align-items: center; }
+.booksBox { width: 1400px; display: flex; flex-direction: column; }
+.title { width: 1400px; margin-bottom: 50px; display: flex; justify-content: center; align-items: center; flex-direction: column; border-bottom: #16213e 2px solid; padding-bottom: 10px; }
+.en { font-size: 60px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: bold; color: #e8d5a3; }
+.ko { font-size: 20px; font-weight: bold; }
+.booktable { width: 1400px; border-collapse: collapse; height: 600px; overflow: hidden; background-color: #fff; border-radius: 10px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.315); }
+thead { width: 100%; height: 50px; background-color: #16213e; }
+th { color: #ccc; }
+tbody tr { width: 1400px; height: 150px; border-bottom: 1px solid #ccc; }
+tbody td { padding: 5px 10px; font-size: 14px; text-align: center; }
+.btitle { width: 300px; }
+.author { width: 320px; }
+.bimg { width: 80px; height: auto; }
+.borrow { background-color: #16213e; color: #ccc; padding: 10px 12px; border: none; border-radius: 10px; cursor: pointer; transition: .2s ease; }
+.borrow:hover { scale: 1.05; box-shadow: 0 0 10px rgba(0, 0, 0, 0.397); }

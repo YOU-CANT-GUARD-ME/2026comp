@@ -1,0 +1,216 @@
+* { margin: 0; padding: 0; box-sizing: border-box; color: #333; list-style: none; text-decoration: none; }
+body { background-color: #f4f1eb; }
+.popupcon { width: 100%; height: 100vh; animation: popup forwards .8s; position: fixed; display: flex; justify-content: center; align-items: center; background-color: #33333348; z-index: 99; }
+.popup { width: 520px; height: 450px; background-color: #fff; border-radius: 10px; overflow: hidden; display: flex; align-items: center; justify-content: space-between; flex-direction: column; }
+.ptop { background-color: #16213e; width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; color: #ccc;  }
+.imgbox { border: 2px solid #e8d5a3; width: 350px; height: 200px; }
+.imgbox img { width: 100%; height: 100%; object-fit: cover; }
+.pbottom { width: 425px; }
+.popclose { width: 100%; padding: 10px; display: flex; justify-content: end; }
+.popclose label { padding: 5px 15px; background-color: #16213e; border: none; border-radius: 5px; color: #fff; cursor: pointer; }
+/* #popupclose:checked ~ .popupcon { display: none; } */
+input[type="radio"]:checked + .popupcon { display: none; }
+@keyframes popup {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+/* 헤더 */
+.header { position: fixed; display: flex; justify-content: center; align-items: center; width: 100%; height: 64px; background-color: #1a1a2e; z-index: 1; }
+.nav { width: 1400px; height: 64px; display: flex; justify-content: space-between; align-items: center; }
+.logo { width: 200px; height: 50px;overflow: hidden;  display: flex; flex-direction: row; justify-content: space-between; }
+.logo img { width: 100%; height: 100%; object-fit: cover; }
+.nav-a > ul { display: flex; list-style: none; }
+.nav-a > ul > li { position: relative; }
+.focus { position: absolute; inset: 0; opacity: 0; cursor: pointer; z-index: 2; }
+.nav-a > ul > li > a { display: flex; align-items: center; gap: 6px; padding: 0 18px; height: 64px; color: #ccc; position: relative; transition: .2s ease; }
+.nav-a > ul > li:hover > a { background-color: #272747; }
+.underline { position: absolute; bottom: 0; left: 18px; right: 18px; height: 2px; background-color: #e8d5a3; transform: scaleX(0); transition: .3s ease; }
+.np { position: relative; width: 18px; height: 18px; color: #ccc; }
+.np::before { content: ''; position: absolute; width: 10px; height: 1.5px; top: 50%; left: 50%; background-color: #ccc; transform: translate(-50%, -50%); color: #ccc; }
+.np::after { content: ''; position: absolute; width: 1.5px; height: 10px; top: 50%; left: 50%; background-color: #ccc; transform: translate(-50%, -50%) rotate(0deg); transition: .3s ease-in-out; color: #ccc; }
+.dropdown { position: absolute; top: 100%; left: 0; width: 160px; background-color: #16213e; border-radius: 0 0 8px 8px; max-height: 0; opacity: 0; overflow: hidden; transform: translateY(-8px); transition: .3s ease; }
+.dropdown li { cursor: pointer; }
+.dropdown li a { color: #aaa; display: block; padding: 11px 20px; }
+.dropdown li:hover { background-color: #1f2e58; }
+.dropdown li:hover a { color: #e8d5a3; }
+.focus:focus ~ .dropdown { max-height: 300px; opacity: 1; transform: translateY(0); pointer-events: auto; }
+.focus:focus ~ a .np::after { transform: translate(-50%, -50%) rotate(90deg); }
+.focus:focus ~ a .underline { transform: scaleX(1); }
+.nav-a > ul > li:not(:hover) .focus { animation: kill 0.001s forwards; }
+@keyframes kill {
+    from { display: none; }
+    to { display: block; }
+}
+.nav-b ul { display: flex; left: none; }
+.nav-b ul li { color: #ccc; padding: 0 18px; height: 64px; display: flex; align-items: center; cursor: pointer; }
+.nav-b ul li:hover { background-color: #272747; }
+.loginbox, .signupbox {  position: absolute; top: 64px; right: 120px; padding: 20px 8px 8px 8px; border-top: 3px solid #e8d5a3; background-color: #fff; width: 300px; height: 250px; display: none; flex-direction: column; justify-content: space-between; }
+.signupbox { height: 300px; }
+.ltop { width: 100%; }
+.closel { width: 80px; height: 30px; background-color: #16213e; display: flex; justify-content: center; align-items: center; border-radius: 10px; color: #ccc; }
+.lbottom, .sbottom { display: flex; width: 100%; height: 150px; flex-direction: column; justify-content: space-between; align-items: center; }
+.sbottom { height: 200px; }
+.lbottom input, .sbottom input { padding: 10px; width: 100%; }
+.lbottom button, .sbottom button { width: 100%; border: none; background-color: #16213e; color: #ccc; padding: 10px; }
+.active { display: flex; }
+
+/* 베너 */
+
+.banner { width: 100%; height: 70vh; position: relative; overflow: hidden; }
+.slide { width: 400%; height: 100%; display: flex; flex-direction: row;  }
+.bg { position: relative; width: 100%; background-position: center; background-size: cover; background-repeat: no-repeat; animation: slide 9s infinite; }
+.bg:nth-child(1) { background-image: url(../images/images\ \(64\).jpg); }
+.bg:nth-child(2) { background-image: url(../images/images\ \(62\).jpg); }
+.bg:nth-child(3) { background-image: url(../images/images\ \(50\).jpg); }
+.bg:nth-child(4) { background-image: url(../images/images\ \(64\).jpg); }
+@keyframes slide {
+    0%, 33% { transform: translateX(0); }
+    34%, 66% { transform: translateX(-100%); }
+    67%, 99% { transform: translateX(-200%); }
+    100% {  transform: translateX(-300%); }
+}
+.text { position: absolute; top: 50%; left: 5%; padding: 20px; background-color: #272747bb; border-radius: 15px; }
+.bigText { font-weight: bold; font-size: 80px; color: #e8d5a3; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; }
+.smallText { color: #ccc; }
+.circles { position: absolute; top: 64px; right: 2%; }
+.circle { width: 300px; height: 300px; background-color: #16213ea6; border-radius: 50%;position: absolute;  }
+.c1 {  right: 500px; top: 60px; background-color: #e8d5a3ad; }
+.c2 {  right: 200px; top: 400px; background-color: #16213ea6; }
+.c3 {  right: 100px; top: -100px; background-color: #16213ea6; }
+.progress { position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background-color: #a0a0a06b; }
+.prog-fill { width: 0; height: 100%; background-color: #e8d5a3; animation: progbar 3s linear infinite; }
+@keyframes progbar {
+    from { width: 0; }
+    to { width: 100%; }
+}
+.banner:hover .bg, .banner:hover .prog-fill{ animation-play-state: paused; }
+
+/* 소식 */
+
+.noticeSection { width: 100%; height: 800px; display: flex; justify-content: center; align-items: center; }
+.noticeBox { width: 1400px; height: 550px; display: flex; flex-direction: column; align-items: center; }
+.title { width: 1400px; margin-bottom: 50px; display: flex; justify-content: center; align-items: center; flex-direction: column; border-bottom: #16213e 2px solid; padding-bottom: 10px; }
+.en { font-size: 60px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: bold; color: #e8d5a3; }
+.ko { font-size: 20px; font-weight: bold; }
+.noticeCon { width: 1200px; height: 500px; display: flex; flex-direction: column; }
+.noticeBtns { width: 100%; height: 50px; display: flex; }
+.nbtn { padding: 0px 14px; height: 50px; cursor: pointer; color: #d1d1d1; background-color: #16213e; filter: brightness(75%); display: flex; align-items: center; border-radius: 10px 10px 0 0; justify-content: center; margin-right: 10px; }
+.notice { width: 100%; box-shadow: 0 0 20px rgba(0,0,0,0.2); background-color: #16213e; display: none; flex-direction: column; }
+.nrow { width: 100%; height: 60px; border-bottom: 1px solid #ccc; display: flex; justify-content: space-between; align-items: center; flex-direction: row; padding: 5px 10px; }
+.ncont { color: #ccc; font-size: 20px; }
+.ncont{font-size: 14px; font-weight: 500;}
+.ndate { color: #aaa; font-size: 13px;}
+#n1:checked ~ .noticeSection .n1 { display: flex; }
+#n2:checked ~ .noticeSection .n2 { display: flex; }
+#n3:checked ~ .noticeSection .n3 { display: flex; }
+#n1:checked ~ .noticeSection .nb1 { background-color: #16213e; filter: brightness(100%); transition: .2s ease; }
+#n2:checked ~ .noticeSection .nb2 { background-color: #16213e; filter: brightness(100%); transition: .2s ease; }
+#n3:checked ~ .noticeSection .nb3 { background-color: #16213e; filter: brightness(100%); transition: .2s ease; }
+
+/* 자주찾는 메뉴 */
+
+.menuSeaction { margin-top: 100px; margin-bottom: 100px; width: 100%; height: 150px; display: flex; justify-content: center; }
+.menuBox { width: 1400px; height: 100%; display: flex; flex-direction: row; justify-content: space-between; }
+.menucon { cursor: pointer; width: 150px; color: #ccc; border: 2px solid #ccc; height: 120px; transition: .2s ease-in-out; background-color: #16213e; display: flex; justify-content: center; align-items: center; flex-direction: column; border-radius: 5px; }
+.menucon i { width: 60px; height: 60px; border-radius: 50%; background-color: #e8d5a3; color: #16213e; display: flex; justify-content: center; align-items: center; }
+.menucon:hover { box-shadow: 0 0 15px rgba(0, 0, 0, 0.596); scale: 1.1; border: 2px solid #e8d5a3; }
+
+/* 프로그램 */
+
+.progSection { width: 100%;  display: flex; justify-content: center; align-items: center; margin-top: 100px; }
+.progBox { width: 1400px; display: flex; flex-direction: column; }
+.progCon { width: 1400px; height: 800px; display: flex; flex-wrap: wrap; justify-content: space-between; }
+.progimg { position: relative; width: 300px; height: 350px; transition: .3s ease; }
+.progimg img { width: 100%; height: 100%; }
+.progCon:hover .progimg { opacity: 0.7; }
+.progCon:has(.progimg:hover) .progimg:not(:hover) {scale: 0.9;}
+.progimg:hover { scale: 1.1; opacity: 1 !important; }
+.ptitle { position: absolute; bottom: 0; width: 100%; height: 0px; opacity: 0; transition: .2s ease; display: flex; justify-content: center; align-items: center; background-color: #16213eb4; color: #e8d5a3; border-radius: 10px 10px 0 0; }
+.progimg:hover .ptitle { height: 50px; opacity: 1; }
+
+.progcard { position: fixed; inset: 0; width: 100vw; height: 100vh; display: none; justify-content: center; align-items: center; background-color: #333333b6; z-index: 3; }
+.prog { width: 400px; height: 500px; background-color: #fff; border-radius: 10px; overflow: hidden; }
+.progheader { width: 100%; height: 50px; padding: 5px; background-color: #16213e; display: flex; flex-direction: row; justify-content: space-between; align-items: center; }
+.progtitle { color: #ccc; font-size: 15px; }
+.pclose { width: 80px; background-color: red; height: 30px; border-radius: 5px; display: flex; justify-content: center; align-items: center; color: #fff; cursor: pointer;  }
+.progcont { width: 100%; height: 450px; }
+.progcont img { width: 100%; height: 100%; }
+
+#card1:checked ~ .card1 { display: flex; }
+#card2:checked ~ .card2 { display: flex; }
+#card3:checked ~ .card3 { display: flex; }
+#card4:checked ~ .card4 { display: flex; }
+#card5:checked ~ .card5 { display: flex; }
+#card6:checked ~ .card6 { display: flex; }
+#card7:checked ~ .card7 { display: flex; }
+#card8:checked ~ .card8 { display: flex; }
+
+/* 달력 */
+
+.calenderSection { width: 100%; display: flex; justify-content: center; align-items: center; margin-top: 100px; margin-bottom: 150px; }
+.calenderBox { width: 1400px; display: flex; flex-direction: column; align-items: center; }
+.calender { width: 100%; border: 1px solid #ccc; height: 800px; display: flex; flex-direction: column; background-color: #fff; border-radius: 10px 10px 0 0; overflow: hidden; }
+.caltop { width: 100%; height: 50px; display: flex; flex-direction: row; justify-content: space-between; align-items: center; background-color: #16213e; padding: 0 20px; }
+.calselect { width: 1400px; display: flex; flex-direction: row; justify-content: space-between; }
+#year,#month { padding: 5px; }
+.calinfo { display: flex; flex-direction: row; }
+.year { font-size: 35px; font-weight: bold; color: #16213e; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; margin-right: 20px; }
+.month { font-size: 35px; font-weight: bold; color: #16213e; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif }
+.caltop div { color: #ccc; width: 150px; display: flex; justify-content: center; align-items: center; }
+.calbottom { width: 100%; display: flex; flex-direction: column; }
+.calrow { width: 100%; display: flex; flex-direction: row; }
+.days { width: 200px; height: 150px; border: 1px solid #ccc; padding: 10px; }
+.days div { font-size: 14px; }
+.days:hover { background-color: #eee; }
+.nextm { background-color: #eee; }
+
+/* 추천도서 */
+
+.recSection { width: 100%; display: flex; justify-content: center; align-items: center; }
+.recBox { width: 1400px; display: flex; flex-direction: column; overflow: hidden; align-items: flex-start; }
+.books { width: calc(1400px * 7); display: flex; flex-direction: row; }
+.recbook { width: 1400px; height: 500px; display: flex; flex-direction: row; background-color: #fff; border-radius: 20px; overflow: hidden; }
+.rLeft { width: 350px; height: 100%; }
+.rLeft img { width: 100%; height: 100%; }
+.rRight { width: 1050px; height: 100%; background-color: #16213e; display: flex; flex-direction: column; }
+.retop { width: 100%; height: 100px; display: flex; justify-content: center; align-items: center; }
+.bookNum { font-size: 15px; color: #ccc; font-weight: bold; background-color: #1f2e58;padding: 5px; border-radius: 25px; }
+.remid { width: 100%; display: flex; flex-direction: column; align-items: center; }
+.btitle { color: #ccc; font-size: 30px; margin-bottom: 50px; }
+.author { color: #ccc; border-left: 5px solid #e8d5a3; padding-left: 10px; margin-bottom: 5px; }
+.bcont { width: 940px; color: #bbb; font-size: 15px; }
+.rbottom { display: flex; width: 100%; justify-content: center; margin-top: 150px; }
+.rebtns { width: 940px; color: #ccc; display: flex; justify-content: space-between; }
+.rebtns label { color: #ccc; background-color: #1f2e58; width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; }
+.rebtns span { color: #ccc; }
+.pagination { color: #ccc; }
+.curpage::after {content: '1';}
+#bs1:checked ~ .recSection .recbook { transform: translatex(-8400px); transition: .3s ease; }
+#bs2:checked ~ .recSection .recbook { transform: translatex(-1400px); transition: .3s ease; }
+#bs3:checked ~ .recSection .recbook { transform: translatex(0px); transition: .3s ease; }
+#bs4:checked ~ .recSection .recbook { transform: translatex(-2800px); transition: .3s ease; }
+#bs5:checked ~ .recSection .recbook { transform: translatex(-1400px); transition: .3s ease; }
+#bs6:checked ~ .recSection .recbook { transform: translatex(-4200px); transition: .3s ease; }
+#bs7:checked ~ .recSection .recbook { transform: translatex(-2800px); transition: .3s ease; }
+#bs8:checked ~ .recSection .recbook { transform: translatex(-5600px); transition: .3s ease; }
+#bs9:checked ~ .recSection .recbook { transform: translatex(-4200px); transition: .3s ease; }
+#bs10:checked ~ .recSection .recbook { transform: translatex(-7000px); transition: .3s ease; }
+#bs11:checked ~ .recSection .recbook { transform: translatex(-5600px); transition: .3s ease; }
+#bs12:checked ~ .recSection .recbook { transform: translatex(-8400px); transition: .3s ease; }
+#bs13:checked ~ .recSection .recbook { transform: translatex(-7000px); transition: .3s ease; }
+#bs14:checked ~ .recSection .recbook { transform: translatex(0px); transition: .3s ease; }
+
+#bs1:checked ~ .recSection .curpage::after { content: '7'; }
+#bs2:checked ~ .recSection .curpage::after { content: '2'; }
+#bs3:checked ~ .recSection .curpage::after { content: '1'; }
+#bs4:checked ~ .recSection .curpage::after { content: '3'; }
+#bs5:checked ~ .recSection .curpage::after { content: '2'; }
+#bs6:checked ~ .recSection .curpage::after { content: '4'; }
+#bs7:checked ~ .recSection .curpage::after { content: '3'; }
+#bs8:checked ~ .recSection .curpage::after { content: '5'; }
+#bs9:checked ~ .recSection .curpage::after { content: '4'; }
+#bs10:checked ~ .recSection .curpage::after { content: '6'; }
+#bs11:checked ~ .recSection .curpage::after { content: '5'; }
+#bs12:checked ~ .recSection .curpage::after { content: '7'; }
+#bs13:checked ~ .recSection .curpage::after { content: '6'; }
+#bs14:checked ~ .recSection .curpage::after { content: '1'; }

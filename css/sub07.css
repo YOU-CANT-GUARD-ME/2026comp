@@ -1,0 +1,26 @@
+* {margin: 0; padding: 0; box-sizing: border-box; list-style: none; text-decoration: none;}
+.popupSection { width: 100%; padding: 0px; display: flex; justify-content: center; align-items: center; }
+.popupBox { width: 1400px; display: flex; flex-direction: column; align-items: center;  }
+.title { width: 1400px; margin-bottom: 50px; margin-top: 150px !important; display: flex; justify-content: center; align-items: center; flex-direction: column; border-bottom: #16213e 2px solid; padding-bottom: 10px; }
+.en { font-size: 60px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: bold; color: #e8d5a3; }
+.ko { font-size: 20px; font-weight: bold; }
+.popupmaker { width: 500px; height: 420px; background-color: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 15px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
+.form-con { display: flex; width: 100%; flex-direction: row; justify-content: space-between; }
+.ptitle { width: 100% !important; }
+.form-con input { padding: 10px; width: 48%; }
+.form-box { width: 100%; height: 200px; }
+.form-box label { display: flex; flex-direction: column; border: 2px dotted #333; justify-content: center; align-items: center; width: 100%; height: 100%; background-color: #ddd; cursor: pointer; border-radius: 10px; font-weight: bold; }
+.s { display: flex; justify-content: end; }
+.form-con button { padding: 5px 20px; border: none; background-color: #16213e; color: #ccc; border-radius: 5px; }
+.popupscon { width: 1400px; margin-bottom: 50px; display: flex; flex-direction: row; flex-wrap: wrap; }
+.popup { position: relative; width: 350px; height: 300px; display: flex; flex-direction: column; align-items: center; background-color: #fff; overflow: hidden; border-radius: 10px; }
+.ptop { width: 100%; height: 30px; background-color: #16213e; display: flex; justify-content: center; align-items: center; }
+.ptop h4 { color: #ccc; }
+.popupimg {width: 350px; height: 270px;}
+.popupimg img { width: 100%; height: 100%; object-fit: cover; }
+.form-btns { position: absolute; bottom: 0; width: 100%; height: 0px; display: flex; flex-direction: row; justify-content: space-between; transition: .3s ease; }
+.form-btn { display: flex;}
+.form-btn button, .form-btn a { padding: 5px 15px; font-size: 14px; border: none; border-radius: 5px; cursor: pointer; }
+.update { background-color: #16213e; color: #ccc; }
+.delete { background-color: red; color: #fff; }
+.popup:hover .form-btns { height: 50px; padding: 10px; }

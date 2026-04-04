@@ -1,0 +1,15 @@
+* {margin: 0; padding: 0; box-sizing: border-box; list-style: none; text-decoration: none;}
+.regSection { width: 100%; display: flex; justify-content: center; align-items: center; padding: 150px; }
+.regBox {width: 1400px; display: flex; flex-direction: column; align-items: center;}
+.title { width: 1400px; margin-bottom: 50px; display: flex; justify-content: center; align-items: center; flex-direction: column; border-bottom: #16213e 2px solid; padding-bottom: 10px; }
+.en { font-size: 60px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: bold; color: #e8d5a3; }
+.ko { font-size: 20px; font-weight: bold; }
+.bookmaker { width: 500px; height: 450px; background-color: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); padding: 15px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
+.form-con { display: flex; width: 100%; flex-direction: row; justify-content: space-between; }
+.btitle { width: 100% !important; }
+.form-con input { padding: 10px; width: 48%; }
+.form-box { width: 100%; height: 200px; }
+.form-box label { display: flex; flex-direction: column; border: 2px dotted #333; justify-content: center; align-items: center; width: 100%; height: 100%; background-color: #ddd; cursor: pointer; border-radius: 10px; font-weight: bold; }
+.s { display: flex; justify-content: end; }
+.form-con button { padding: 5px 20px; border: none; background-color: #16213e; color: #ccc; border-radius: 5px; }
+

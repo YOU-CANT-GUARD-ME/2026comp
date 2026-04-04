@@ -1,0 +1,15 @@
+* { margin: 0; padding: 0; box-sizing: border-box; list-style: none; text-decoration: none; }
+.seatsSection { width: 100%; display: flex; padding: 150px; justify-content: center; align-items: center; }
+.seatsBox { width: 1400px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.title { width: 1400px; margin-bottom: 50px; display: flex; justify-content: center; align-items: center; flex-direction: column; border-bottom: #16213e 2px solid; padding-bottom: 10px; }
+.en { font-size: 60px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: bold; color: #e8d5a3; }
+.ko { font-size: 20px; font-weight: bold; }
+.seatcon { width: 1400px; height: 500px; box-shadow: 0 0 10px rgba(0,0,0,0.1); background-color: #fff; border-radius: 10px;overflow: hidden; display: flex; justify-content: space-between; align-items: center; flex-direction: column; padding: 20px 10px 20px 20px; }
+.seats { width: 100%; height: 480px; display: flex; flex-wrap: wrap; justify-content: center; flex-direction: row; }
+.seat { width: 80px; height: 80px; border: 2px solid #16213e; background-color: #f4f1eb; color: #333; margin-right: 10px; transition: .2s ease; user-select: none; cursor: pointer; border-radius: 10px; display: flex; justify-content: center; align-items: center; }
+.seat:hover { background-color: #16213e; color: #e8d5a3; }
+.seatdata { width: 100%; height: 80px; display: flex; flex-direction: row; justify-content: space-between; align-items: center; background-color: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);  margin-top: 40px; padding: 20px; }
+form { display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 700px; display: none;}
+.reservebtn { background-color: #16213e; color: #ccc; padding: 6px 12px; border-radius: 5px; cursor: pointer; user-select: none; border: none; transition: .2s ease; }
+.reservebtn:hover { scale: 1.01; }
+.seat.selected { background-color: #16213e; color: #e8d5a3; }
