@@ -10,7 +10,7 @@ if (isset($_POST['return_id'])) {
 
 if (isset($_POST['cancel_id'])) {
     $id = $_POST['cancel_id'];
-    DB::exec("delete from seats where if = $id");
+    DB::exec("delete from seats where id = $id");
     alert("예약 취소");
     move('sub06.php');
 }

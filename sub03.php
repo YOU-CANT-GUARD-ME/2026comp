@@ -43,6 +43,6 @@
             </div>
         </div>
     </div>
-    <script src="./script/sub02.js"></script>
+    <script src="./script/sub03.js"></script>
 </body>
 </html>

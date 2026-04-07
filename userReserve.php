@@ -17,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $seatArr = json_decode($seats, true);
         $isDupli = false;
-        echo $seatArr;
         foreach($seatArr as $seat) {
             $check = DB::fetch("select * from seats where seat_number = '$seat'
             and reserve_date= '$reserve_date' 

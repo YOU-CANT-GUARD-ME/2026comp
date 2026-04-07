@@ -2,9 +2,9 @@ let selected = [];
 let dragging = false;
 const seats = document.querySelectorAll('.seat');
 const seatCon = document.querySelector('.seats');
-const selValue = document.querySelector('input[name="selected_seat"]');
-const selInput = document.querySelector('.seatdata form');
 const showSel = document.querySelector('.seatdata span');
+const selValue = document.querySelector('input[name="selected_seats"}');
+const selInput = document.querySelector('.seatdata form');
 
 function select (e) {
     const seat = e.textContent.trim();
@@ -17,15 +17,16 @@ function select (e) {
         selected.push(seat);
         e.classList.add('selected');
     }
-    selValue.value = JSON.stringify(selected);
-    showSel.textContent = !selected.length ? "좌석번호: 없음" : `좌석번호: ${selected.join('번, ')}번`;
-    selInput.style.display = !selected.length ? "none" : "flex";
-}
-seatCon.onmouse = () => {dragging = true}
+
+    if (selValue) selValue.value = JSON.stringify(selected);
+    showSel.textContent = !selected.length ? "좌석번호: 없음" : `좌석번호: ${selected.join('번')}번`;
+    selInput.style.dispaly = "none" : "flex";
+};
+seatCon.onmousedown = () => {dragging = true}
 seats.forEach(seat => {
-    seat.onmouse = () => {
-        if (dragging) {select(seat)}
+    seat.onmouseover = () => {
+        if (dragging) select(seat);
     }
-    seat.onmousedown = () => {select(seat)}
-})
-window.onmouseup = () => {dragging = false}
+    seat.onmousedown = () => {select(seat)};
+});
+window.onmouseup = () => {dragging = false};

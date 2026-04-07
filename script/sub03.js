@@ -18,7 +18,7 @@ function select (e) {
         e.classList.add('selected');
     }
 
-    document.querySelector('input[name="selected_seats"]').value = JSON.stringify(selected)
+    if (selValue) selValue.value = JSON.stringify(selected)
     showSel.textContent = !selected.length ? "좌석번호: 없음" : `좌석번호: ${selected.join('번, ')}번`;
     selInput.style.display = !selected.length ? "none" : "flex";
 }
@@ -29,4 +29,4 @@ seats.forEach(seat => {
     }
     seat.onmousedown = () => {select(seat)}
 });
-window.onmouseup = () => {dragging = false}
+window.onmouseup = () => {dragging = false} 

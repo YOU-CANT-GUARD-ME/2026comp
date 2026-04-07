@@ -8,10 +8,10 @@ class DB {
     {
         self::$db ??= new PDO("mysql:host=localhost;dbname=c-module2", "root", "", [19 => 5, 3 => 2]);
 
-        return match ($name) {
-            "exec"=> self::$db->exec($args[0]),
-            "fetch"=> self::$db->query($args[0])->fetch(),
-            "fetchAll"=> self::$db->query($args[0])->fetchAll(),
+        return match($name) {
+            "exec" => self::$db->exec($args[0]),
+            "fetch" => self::$db->query($args[0])->fetch(),
+            "fetchAll" => self::$db->query($args[0])->fetchAll(),
         };
     }
 }
